@@ -11,6 +11,7 @@ struct HabitDetailView: View {
     @State private var selectedDate = Date()
 
     @State var habit: HabitModel
+    @State var isCreatingNew = false
 
     var body: some View {
         NavigationView {
@@ -28,6 +29,7 @@ struct HabitDetailView: View {
                 HNotePerDayView(habit: habit, date: selectedDate)
 
             }.navigationTitle("\(habit.habitName)")
+                .onChange(of: isCreatingNew) {}
 //                .onAppear {
 //                    habit.addNotes()
 //                }

@@ -19,6 +19,7 @@ final class HabitModel {
     var habitStreak: Int
     var habitLastCompletionDate: Date?
     var habitCompletionDates: [Date]
+    var habitDatesWithImage: [Date: Data]
 
     @Relationship(deleteRule: .cascade, inverse: \HNoteModel.habit) var notes: [HNoteModel]
 
@@ -42,6 +43,7 @@ final class HabitModel {
         self.habitLastCompletionDate = lastCompletionDate
         self.notes = []
         self.habitCompletionDates = []
+        self.habitDatesWithImage = [:]
     }
 
     static func getDateFromString(_ dateString: String) -> Date? {
@@ -74,5 +76,15 @@ final class HabitModel {
         }
 
         return self.habitCompletionDates
+    }
+
+    func getDatesWithImage() -> [Date: Data] {
+        for note in self.notes {
+            if note.selectedPhotoData != nil {
+                self.habitDatesWithImage.updateValue(note.selectedPhotoData!, forKey: note.date)
+            }
+        }
+
+        return self.habitDatesWithImage
     }
 }

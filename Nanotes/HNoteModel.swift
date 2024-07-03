@@ -13,6 +13,7 @@ final class HNoteModel {
     var uuid: UUID
     var lastModified: Date
     var content: String
+    var selectedPhotoData: Data?
 
     @Attribute(.unique)
     var habit: HabitModel
