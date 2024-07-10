@@ -13,6 +13,8 @@ struct HabitView: View {
 	
     @State private var showAddHabit = false
     @State private var searchQuery = ""
+    
+    @State private var lastViewedDate: Date?
 	
     @Query(sort: \HabitModel.habitTime, order: .forward) private var allHabits: [HabitModel]
 	
@@ -266,10 +268,15 @@ struct HabitView: View {
                        .presentationDetents([.large])
                    })
             .onAppear {
-                for habit in allHabits {
-                    if isHabitDueToday(habit: habit) {
-                        resetCompletionStatus(for: habit)
+                let today = Calendar.current.startOfDay(for: Date())
+                        
+                if lastViewedDate == nil || Calendar.current.isDate(lastViewedDate!, inSameDayAs: today) == false {
+                    for habit in allHabits {
+                        if isHabitDueToday(habit: habit) {
+                            resetCompletionStatus(for: habit)
+                        }
                     }
+                    lastViewedDate = today
                 }
             }
         }

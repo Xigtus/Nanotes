@@ -27,12 +27,17 @@ struct HabitDetailView: View {
                 }.foregroundColor(.accentColor)
 
                 HNotePerDayView(habit: habit, date: selectedDate)
-
-            }.navigationTitle("\(habit.habitName)")
-                .onChange(of: isCreatingNew) {}
-//                .onAppear {
-//                    habit.addNotes()
-//                }
+            }
+            .navigationTitle("\(habit.habitName)")
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    VStack {
+                        Text(habit.habitTime.formatted("dd MMMM yyyy")).font(.subheadline).foregroundStyle(.secondary)
+                        Text("Habit will occur \(habit.habitRepeat.lowercased())").font(.subheadline).foregroundStyle(.secondary)
+                    }
+                }
+            }
+            .onChange(of: isCreatingNew) {}
         }
     }
 }
