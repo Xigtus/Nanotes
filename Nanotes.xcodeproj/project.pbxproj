@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B55E7B12C3F9A7400526B17 /* EditHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B55E7B02C3F9A7400526B17 /* EditHabitView.swift */; };
+		9B55E7B32C3F9A8C00526B17 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B55E7B22C3F9A8C00526B17 /* NotesView.swift */; };
+		9B55E7B52C3F9A9700526B17 /* HabitRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B55E7B42C3F9A9700526B17 /* HabitRowView.swift */; };
+		9B55E7B72C3F9AC900526B17 /* FoldersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B55E7B62C3F9AC900526B17 /* FoldersView.swift */; };
+		9B55E7B92C3F9AD300526B17 /* CreateFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B55E7B82C3F9AD300526B17 /* CreateFolderView.swift */; };
+		9B55E7BB2C3F9AEC00526B17 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B55E7BA2C3F9AEC00526B17 /* Habit.swift */; };
+		9B55E7BD2C3F9AF300526B17 /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B55E7BC2C3F9AF300526B17 /* Folder.swift */; };
 		E4277F032C3E25410040CBEC /* NanotesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4277F022C3E25410040CBEC /* NanotesApp.swift */; };
 		E4277F052C3E25410040CBEC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4277F042C3E25410040CBEC /* ContentView.swift */; };
 		E4277F072C3E25430040CBEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4277F062C3E25430040CBEC /* Assets.xcassets */; };
@@ -14,6 +21,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B55E7B02C3F9A7400526B17 /* EditHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHabitView.swift; sourceTree = "<group>"; };
+		9B55E7B22C3F9A8C00526B17 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
+		9B55E7B42C3F9A9700526B17 /* HabitRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitRowView.swift; sourceTree = "<group>"; };
+		9B55E7B62C3F9AC900526B17 /* FoldersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldersView.swift; sourceTree = "<group>"; };
+		9B55E7B82C3F9AD300526B17 /* CreateFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFolderView.swift; sourceTree = "<group>"; };
+		9B55E7BA2C3F9AEC00526B17 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
+		9B55E7BC2C3F9AF300526B17 /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
 		E4277EFF2C3E25410040CBEC /* Nanotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nanotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4277F022C3E25410040CBEC /* NanotesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanotesApp.swift; sourceTree = "<group>"; };
 		E4277F042C3E25410040CBEC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +46,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B55E7AB2C3F9A3A00526B17 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9B55E7AF2C3F9A5D00526B17 /* Folders View */,
+				9B55E7AE2C3F9A5500526B17 /* Notes View */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9B55E7AC2C3F9A4300526B17 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9B55E7BA2C3F9AEC00526B17 /* Habit.swift */,
+				9B55E7BC2C3F9AF300526B17 /* Folder.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9B55E7AE2C3F9A5500526B17 /* Notes View */ = {
+			isa = PBXGroup;
+			children = (
+				9B55E7B02C3F9A7400526B17 /* EditHabitView.swift */,
+				9B55E7B42C3F9A9700526B17 /* HabitRowView.swift */,
+				9B55E7B22C3F9A8C00526B17 /* NotesView.swift */,
+			);
+			path = "Notes View";
+			sourceTree = "<group>";
+		};
+		9B55E7AF2C3F9A5D00526B17 /* Folders View */ = {
+			isa = PBXGroup;
+			children = (
+				9B55E7B62C3F9AC900526B17 /* FoldersView.swift */,
+				9B55E7B82C3F9AD300526B17 /* CreateFolderView.swift */,
+			);
+			path = "Folders View";
+			sourceTree = "<group>";
+		};
 		E4277EF62C3E25410040CBEC = {
 			isa = PBXGroup;
 			children = (
@@ -53,6 +104,8 @@
 			children = (
 				E4277F022C3E25410040CBEC /* NanotesApp.swift */,
 				E4277F042C3E25410040CBEC /* ContentView.swift */,
+				9B55E7AC2C3F9A4300526B17 /* Models */,
+				9B55E7AB2C3F9A3A00526B17 /* Views */,
 				E4277F062C3E25430040CBEC /* Assets.xcassets */,
 				E4277F082C3E25430040CBEC /* Preview Content */,
 			);
@@ -138,7 +191,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4277F052C3E25410040CBEC /* ContentView.swift in Sources */,
+				9B55E7B92C3F9AD300526B17 /* CreateFolderView.swift in Sources */,
 				E4277F032C3E25410040CBEC /* NanotesApp.swift in Sources */,
+				9B55E7B72C3F9AC900526B17 /* FoldersView.swift in Sources */,
+				9B55E7B52C3F9A9700526B17 /* HabitRowView.swift in Sources */,
+				9B55E7B32C3F9A8C00526B17 /* NotesView.swift in Sources */,
+				9B55E7BB2C3F9AEC00526B17 /* Habit.swift in Sources */,
+				9B55E7B12C3F9A7400526B17 /* EditHabitView.swift in Sources */,
+				9B55E7BD2C3F9AF300526B17 /* Folder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
