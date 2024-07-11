@@ -11,7 +11,8 @@ import SwiftUI
 struct NanotesApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            FoldersView()
         }
+        .modelContainer(for: [Folder.self, Habit.self])
     }
 }
