@@ -9,18 +9,22 @@
 /* Begin PBXBuildFile section */
 		8BCDDD2D2C40DE8000DA2F38 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8BCDDD2C2C40DE8000DA2F38 /* .gitignore */; };
 		E4277F032C3E25410040CBEC /* NanotesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4277F022C3E25410040CBEC /* NanotesApp.swift */; };
-		E4277F052C3E25410040CBEC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4277F042C3E25410040CBEC /* ContentView.swift */; };
+		E4277F052C3E25410040CBEC /* HabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4277F042C3E25410040CBEC /* HabitView.swift */; };
 		E4277F072C3E25430040CBEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4277F062C3E25430040CBEC /* Assets.xcassets */; };
 		E4277F0A2C3E25430040CBEC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4277F092C3E25430040CBEC /* Preview Assets.xcassets */; };
+		E4DF2B432C401A91007C41D8 /* HabitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF2B422C401A91007C41D8 /* HabitModel.swift */; };
+		E4DF2B452C401B64007C41D8 /* AddHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF2B442C401B64007C41D8 /* AddHabitView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8BCDDD2C2C40DE8000DA2F38 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		E4277EFF2C3E25410040CBEC /* Nanotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nanotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4277F022C3E25410040CBEC /* NanotesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanotesApp.swift; sourceTree = "<group>"; };
-		E4277F042C3E25410040CBEC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E4277F042C3E25410040CBEC /* HabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitView.swift; sourceTree = "<group>"; };
 		E4277F062C3E25430040CBEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E4277F092C3E25430040CBEC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E4DF2B422C401A91007C41D8 /* HabitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitModel.swift; sourceTree = "<group>"; };
+		E4DF2B442C401B64007C41D8 /* AddHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +59,9 @@
 			isa = PBXGroup;
 			children = (
 				E4277F022C3E25410040CBEC /* NanotesApp.swift */,
-				E4277F042C3E25410040CBEC /* ContentView.swift */,
+				E4277F042C3E25410040CBEC /* HabitView.swift */,
+				E4DF2B442C401B64007C41D8 /* AddHabitView.swift */,
+				E4DF2B422C401A91007C41D8 /* HabitModel.swift */,
 				E4277F062C3E25430040CBEC /* Assets.xcassets */,
 				E4277F082C3E25430040CBEC /* Preview Content */,
 			);
@@ -141,7 +147,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4277F052C3E25410040CBEC /* ContentView.swift in Sources */,
+				E4DF2B432C401A91007C41D8 /* HabitModel.swift in Sources */,
+				E4DF2B452C401B64007C41D8 /* AddHabitView.swift in Sources */,
+				E4277F052C3E25410040CBEC /* HabitView.swift in Sources */,
 				E4277F032C3E25410040CBEC /* NanotesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
