@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8BCDDD2D2C40DE8000DA2F38 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8BCDDD2C2C40DE8000DA2F38 /* .gitignore */; };
 		E4277F032C3E25410040CBEC /* NanotesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4277F022C3E25410040CBEC /* NanotesApp.swift */; };
 		E4277F052C3E25410040CBEC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4277F042C3E25410040CBEC /* ContentView.swift */; };
 		E4277F072C3E25430040CBEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4277F062C3E25430040CBEC /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8BCDDD2C2C40DE8000DA2F38 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		E4277EFF2C3E25410040CBEC /* Nanotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nanotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4277F022C3E25410040CBEC /* NanotesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanotesApp.swift; sourceTree = "<group>"; };
 		E4277F042C3E25410040CBEC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -35,6 +37,7 @@
 		E4277EF62C3E25410040CBEC = {
 			isa = PBXGroup;
 			children = (
+				8BCDDD2C2C40DE8000DA2F38 /* .gitignore */,
 				E4277F012C3E25410040CBEC /* Nanotes */,
 				E4277F002C3E25410040CBEC /* Products */,
 			);
@@ -126,6 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4277F0A2C3E25430040CBEC /* Preview Assets.xcassets in Resources */,
+				8BCDDD2D2C40DE8000DA2F38 /* .gitignore in Resources */,
 				E4277F072C3E25430040CBEC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
