@@ -15,16 +15,19 @@ final class HabitModel {
 	var habitRepeat: String
 	var habitTime: Date
 	var habitAlert: String
+	var habitIsCompleted: Bool
 	
 	init(habitName: String = "",
 		 habitStartDate: Date = .now,
 		 habitRepeat: String = "Every Day",
 		 habitTime: Date = .now,
-		 habitAlert: String = "None") {
+		 habitAlert: String = "None",
+		 habitIsCompleted: Bool = false) {
 		self.habitName = habitName
 		self.habitStartDate = habitStartDate
 		self.habitRepeat = habitRepeat
 		self.habitTime = habitTime
 		self.habitAlert = habitAlert
+		self.habitIsCompleted = habitIsCompleted
 	}
 }

@@ -29,7 +29,7 @@ struct AddHabitView: View {
 			}
 			
 			Section {
-				DatePicker("Start Date", selection: $habitDetails.habitStartDate, displayedComponents: .date)
+				DatePicker("Start Date", selection: $habitDetails.habitTime, displayedComponents: .date)
 			}
 			
 			Section("Repeat Option") {
@@ -50,7 +50,7 @@ struct AddHabitView: View {
 				}
 			}
 		}
-		.navigationTitle("Add Habit")
+		.navigationTitle("New Habit")
 		.toolbar {
 			ToolbarItem(placement: .primaryAction) {
 				Button("Save") {

@@ -21,6 +21,14 @@ struct HabitView: View {
 		filteredHabits.count
 	}
 	
+	private var todoCount: Int {
+		filteredTodo.count
+	}
+	
+	private var completedCount: Int {
+		completedHabits.count
+	}
+	
 	var filteredHabits: [HabitModel] {
 		if searchQuery.isEmpty {
 			return allHabits
@@ -35,13 +43,125 @@ struct HabitView: View {
 		return filteredHabits
 	}
 	
+	var filteredTodo: [HabitModel] {
+		let uncompletedHabits = allHabits.filter { !$0.habitIsCompleted && Calendar.current.isDateInToday($0.habitTime) }
+		
+		if searchQuery.isEmpty {
+			return uncompletedHabits
+		}
+		
+		let filteredTodo = uncompletedHabits.compactMap { todo in
+			let todoContainsQuery = todo.habitName.range(of: searchQuery, options: .caseInsensitive) != nil
+			
+			return todoContainsQuery ? todo : nil
+		}
+		
+		return filteredTodo
+	}
+	
+	var completedHabits: [HabitModel] {
+		let completed = allHabits.filter { $0.habitIsCompleted && Calendar.current.isDateInToday($0.habitTime) }
+		
+		if searchQuery.isEmpty {
+			return completed
+		}
+		
+		let filteredCompleted = completed.compactMap { habit in
+			let habitContainsQuery = habit.habitName.range(of: searchQuery, options: .caseInsensitive) != nil
+			
+			return habitContainsQuery ? habit : nil
+		}
+		
+		return filteredCompleted
+	}
+	
     var body: some View {
 		NavigationStack {
 			List {
 				if filteredHabits.isEmpty {
 					EmptyView()
 				} else {
-					Section("All Habits") {
+					Section {
+						Text("Today's To-do Habits")
+							.font(.title2)
+							.fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+						
+						Text("\(todoCount) remaining")
+							.font(.callout)
+							.foregroundStyle(.secondary)
+							.offset(y: -15)
+						
+						ForEach(filteredTodo) { todo in
+							HStack {
+								Button {
+									
+									withAnimation {
+										todo.habitIsCompleted.toggle()
+									}
+									
+								} label: {
+									Image(systemName: "circle")
+										.symbolVariant(todo.habitIsCompleted ? .fill : .none)
+										.font(.headline)
+								}
+								.buttonStyle(.plain)
+								.padding(.trailing, 8)
+								
+								VStack(alignment: .leading) {
+									Text(todo.habitName)
+										.font(.headline)
+										.fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+									
+									Text(todo.habitTime, format: Date.FormatStyle(time: .shortened))
+										.font(.callout)
+										.foregroundStyle(.secondary)
+								}
+							}
+							.offset(y: -15)
+						}
+						
+						if completedHabits.isEmpty {
+							EmptyView()
+						} else {
+							Text("Completed (\(completedCount))")
+								.font(.title2)
+								.fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+							
+							ForEach(completedHabits) { completed in
+								HStack {
+									Button {
+										
+										withAnimation {
+											completed.habitIsCompleted.toggle()
+										}
+										
+									} label: {
+										Image(systemName: "circle")
+											.symbolVariant(completed.habitIsCompleted ? .fill : .none)
+											.foregroundStyle(completed.habitIsCompleted ? Color.accentColor : .primary)
+											.font(.headline)
+									}
+									.buttonStyle(.plain)
+									.padding(.trailing, 8)
+									
+									VStack(alignment: .leading) {
+										Text(completed.habitName)
+											.font(.headline)
+											.fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+											.strikethrough(completed.habitIsCompleted)
+											.foregroundStyle(completed.habitIsCompleted ? .secondary : .primary)
+										
+										Text(completed.habitTime, format: Date.FormatStyle(time: .shortened))
+											.font(.callout)
+											.foregroundStyle(.secondary)
+									}
+								}
+							}
+						}
+					}
+					.listRowSeparator(.hidden)
+					
+					Section {
 						ForEach(filteredHabits) { habit in
 							HStack {
 								VStack(alignment: .leading) {
@@ -71,6 +191,11 @@ struct HabitView: View {
 								}
 							}
 						}
+					} header: {
+						Text("All Habits")
+							.font(.headline)
+					} footer: {
+						Text("The times shown above are the times you had set for the goal.")
 					}
 				}
 			}
@@ -78,7 +203,7 @@ struct HabitView: View {
 			.toolbar {
 				ToolbarItemGroup(placement: .primaryAction) {
 					Button(action: {
-						
+						print("Option button is pressed.")
 					}, label: {
 						Label("Options", systemImage: "ellipsis.circle")
 					})
