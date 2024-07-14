@@ -44,19 +44,15 @@ struct HabitView: View {
 	}
 	
 	var filteredTodo: [HabitModel] {
-		let uncompletedHabits = allHabits.filter { !$0.habitIsCompleted && Calendar.current.isDateInToday($0.habitTime) }
+		let uncompletedHabits = allHabits.filter { !$0.habitIsCompleted && isHabitDueToday(habit: $0) }
 		
 		if searchQuery.isEmpty {
 			return uncompletedHabits
 		}
 		
-		let filteredTodo = uncompletedHabits.compactMap { todo in
-			let todoContainsQuery = todo.habitName.range(of: searchQuery, options: .caseInsensitive) != nil
-			
-			return todoContainsQuery ? todo : nil
+		return uncompletedHabits.filter { todo in
+			todo.habitName.range(of: searchQuery, options: .caseInsensitive) != nil
 		}
-		
-		return filteredTodo
 	}
 	
 	var completedHabits: [HabitModel] {
@@ -97,6 +93,7 @@ struct HabitView: View {
 									
 									withAnimation {
 										todo.habitIsCompleted.toggle()
+										updateStreak(for: todo)
 									}
 									
 								} label: {
@@ -112,9 +109,21 @@ struct HabitView: View {
 										.font(.headline)
 										.fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
 									
-									Text(todo.habitTime, format: Date.FormatStyle(time: .shortened))
-										.font(.callout)
-										.foregroundStyle(.secondary)
+									HStack {
+										Text(todo.habitTime, format: Date.FormatStyle(time: .shortened))
+											.font(.callout)
+											.foregroundStyle(.secondary)
+											.padding(.trailing, 3)
+										
+										Image(systemName: "flame")
+											.font(.callout)
+											.padding(.trailing, -3)
+											.foregroundStyle(Color.pink)
+										
+										Text("\(todo.habitStreak)")
+											.font(.callout)
+											.foregroundStyle(Color.pink)
+									}
 								}
 							}
 							.offset(y: -15)
@@ -133,6 +142,8 @@ struct HabitView: View {
 										
 										withAnimation {
 											completed.habitIsCompleted.toggle()
+											updateStreak(for: completed)
+											resetCompletionStatus(for: completed)
 										}
 										
 									} label: {
@@ -151,9 +162,21 @@ struct HabitView: View {
 											.strikethrough(completed.habitIsCompleted)
 											.foregroundStyle(completed.habitIsCompleted ? .secondary : .primary)
 										
-										Text(completed.habitTime, format: Date.FormatStyle(time: .shortened))
-											.font(.callout)
-											.foregroundStyle(.secondary)
+										HStack {
+											Text(completed.habitTime, format: Date.FormatStyle(time: .shortened))
+												.font(.callout)
+												.foregroundStyle(.secondary)
+												.padding(.trailing, 3)
+											
+											Image(systemName: "flame")
+												.font(.callout)
+												.padding(.trailing, -3)
+												.foregroundStyle(Color.pink)
+											
+											Text("\(completed.habitStreak)")
+												.font(.callout)
+												.foregroundStyle(Color.pink)
+										}
 									}
 								}
 							}
@@ -169,9 +192,21 @@ struct HabitView: View {
 										.font(.headline)
 										.fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
 									
-									Text(habit.habitTime, format: Date.FormatStyle(time: .shortened))
-										.font(.callout)
-										.foregroundStyle(.secondary)
+									HStack {
+										Text(habit.habitTime, format: Date.FormatStyle(time: .shortened))
+											.font(.callout)
+											.foregroundStyle(.secondary)
+											.padding(.trailing, 3)
+										
+										Image(systemName: "flame")
+											.font(.callout)
+											.padding(.trailing, -3)
+											.foregroundStyle(Color.pink)
+										
+										Text("\(habit.habitStreak)")
+											.font(.callout)
+											.foregroundStyle(Color.pink)
+									}
 									
 									Text(habit.habitRepeat)
 										.font(.callout)
@@ -231,6 +266,71 @@ struct HabitView: View {
 		}
 		.searchable(text: $searchQuery, prompt: "Search")
     }
+	
+	func isHabitDueToday(habit: HabitModel) -> Bool {
+		let calendar = Calendar.current
+		let today = Date()
+		
+		switch habit.habitRepeat.lowercased() {
+			case "every day":
+				return true
+			case "every week":
+				let habitDay = calendar.component(.weekday, from: habit.habitTime)
+				let todayDay = calendar.component(.weekday, from: today)
+				return habitDay == todayDay
+			default:
+				return false
+		}
+	}
+	
+	func updateStreak(for habit: HabitModel) {
+		let calendar = Calendar.current
+		let today = calendar.startOfDay(for: Date())
+		
+		guard let lastDate = habit.habitLastCompletionDate else {
+			if habit.habitIsCompleted {
+				habit.habitStreak += 1
+				habit.habitLastCompletionDate = today
+			}
+			return
+		}
+		
+		let lastCompletion = calendar.startOfDay(for: lastDate)
+		let daysDifference = calendar.dateComponents([.day], from: lastCompletion, to: today).day ?? 0
+		
+		if habit.habitIsCompleted {
+			if daysDifference == 1 {
+				habit.habitStreak += 1
+				habit.habitLastCompletionDate = today
+			} else if daysDifference > 1 {
+				habit.habitStreak = 1
+				habit.habitLastCompletionDate = today
+			}
+		} else {
+			if daysDifference == 0 {
+				habit.habitStreak -= 1
+				habit.habitLastCompletionDate = nil
+			}
+		}
+	}
+	
+	func resetCompletionStatus(for habit: HabitModel) {
+		let calendar = Calendar.current
+		let today = Date()
+		
+		switch habit.habitRepeat.lowercased() {
+			case "every day":
+				habit.habitIsCompleted = false
+			case "every week":
+				let habitDay = calendar.component(.weekday, from: habit.habitTime)
+				let todayDay = calendar.component(.weekday, from: today)
+				if habitDay != todayDay {
+					habit.habitIsCompleted = false
+				}
+			default:
+				break
+		}
+	}
 }
 
 #Preview {
