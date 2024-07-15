@@ -14,6 +14,7 @@ struct AddHabitView: View {
 	@Environment(\.modelContext) var modelContext
 	
 	@State private var habitDetails = HabitModel()
+//	private var endDate: Date! = nil
 	
 	let repeatFrequency = ["Every Day", "Every Week"]
 	let notificationAlert = ["None", "At time of event", "5 minutes before", "10 minutes before"]
@@ -30,6 +31,7 @@ struct AddHabitView: View {
 			
 			Section {
 				DatePicker("Start Date", selection: $habitDetails.habitStartDate, displayedComponents: .date)
+				DatePicker("End Date", selection: $habitDetails.habitEndDate, displayedComponents: .date)
 			}
 			
 			Section("Repeat Option") {
@@ -50,7 +52,7 @@ struct AddHabitView: View {
 				}
 			}
 		}
-		.navigationTitle("Add Habit")
+		.navigationTitle("New Habit")
 		.toolbar {
 			ToolbarItem(placement: .primaryAction) {
 				Button("Save") {

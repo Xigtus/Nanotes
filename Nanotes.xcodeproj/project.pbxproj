@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		8BCDDD2D2C40DE8000DA2F38 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8BCDDD2C2C40DE8000DA2F38 /* .gitignore */; };
+		9B0A94882C44C2020011C12C /* HNoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0A94872C44C2020011C12C /* HNoteModel.swift */; };
+		9B0A948A2C44C4C60011C12C /* HabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0A94892C44C4C60011C12C /* HabitDetailView.swift */; };
+		9B0A948C2C44C5540011C12C /* FSCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0A948B2C44C5540011C12C /* FSCalendarView.swift */; };
+		9B0A948F2C44C5690011C12C /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9B0A948E2C44C5690011C12C /* FSCalendar */; };
+		9B0A94912C44CB350011C12C /* HNotePerDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0A94902C44CB350011C12C /* HNotePerDayView.swift */; };
 		E4277F032C3E25410040CBEC /* NanotesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4277F022C3E25410040CBEC /* NanotesApp.swift */; };
 		E4277F052C3E25410040CBEC /* HabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4277F042C3E25410040CBEC /* HabitView.swift */; };
 		E4277F072C3E25430040CBEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4277F062C3E25430040CBEC /* Assets.xcassets */; };
@@ -18,6 +23,10 @@
 
 /* Begin PBXFileReference section */
 		8BCDDD2C2C40DE8000DA2F38 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		9B0A94872C44C2020011C12C /* HNoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNoteModel.swift; sourceTree = "<group>"; };
+		9B0A94892C44C4C60011C12C /* HabitDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailView.swift; sourceTree = "<group>"; };
+		9B0A948B2C44C5540011C12C /* FSCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCalendarView.swift; sourceTree = "<group>"; };
+		9B0A94902C44CB350011C12C /* HNotePerDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNotePerDayView.swift; sourceTree = "<group>"; };
 		E4277EFF2C3E25410040CBEC /* Nanotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nanotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4277F022C3E25410040CBEC /* NanotesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanotesApp.swift; sourceTree = "<group>"; };
 		E4277F042C3E25410040CBEC /* HabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitView.swift; sourceTree = "<group>"; };
@@ -32,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B0A948F2C44C5690011C12C /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,8 +70,12 @@
 			children = (
 				E4277F022C3E25410040CBEC /* NanotesApp.swift */,
 				E4277F042C3E25410040CBEC /* HabitView.swift */,
+				9B0A94892C44C4C60011C12C /* HabitDetailView.swift */,
+				9B0A948B2C44C5540011C12C /* FSCalendarView.swift */,
+				9B0A94902C44CB350011C12C /* HNotePerDayView.swift */,
 				E4DF2B442C401B64007C41D8 /* AddHabitView.swift */,
 				E4DF2B422C401A91007C41D8 /* HabitModel.swift */,
+				9B0A94872C44C2020011C12C /* HNoteModel.swift */,
 				E4277F062C3E25430040CBEC /* Assets.xcassets */,
 				E4277F082C3E25430040CBEC /* Preview Content */,
 			);
@@ -92,6 +106,9 @@
 			dependencies = (
 			);
 			name = Nanotes;
+			packageProductDependencies = (
+				9B0A948E2C44C5690011C12C /* FSCalendar */,
+			);
 			productName = Nanotes;
 			productReference = E4277EFF2C3E25410040CBEC /* Nanotes.app */;
 			productType = "com.apple.product-type.application";
@@ -120,6 +137,9 @@
 				Base,
 			);
 			mainGroup = E4277EF62C3E25410040CBEC;
+			packageReferences = (
+				9B0A948D2C44C5690011C12C /* XCRemoteSwiftPackageReference "FSCalendar" */,
+			);
 			productRefGroup = E4277F002C3E25410040CBEC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -147,9 +167,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B0A94882C44C2020011C12C /* HNoteModel.swift in Sources */,
 				E4DF2B432C401A91007C41D8 /* HabitModel.swift in Sources */,
+				9B0A948A2C44C4C60011C12C /* HabitDetailView.swift in Sources */,
 				E4DF2B452C401B64007C41D8 /* AddHabitView.swift in Sources */,
 				E4277F052C3E25410040CBEC /* HabitView.swift in Sources */,
+				9B0A948C2C44C5540011C12C /* FSCalendarView.swift in Sources */,
+				9B0A94912C44CB350011C12C /* HNotePerDayView.swift in Sources */,
 				E4277F032C3E25410040CBEC /* NanotesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,6 +380,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9B0A948D2C44C5690011C12C /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9B0A948E2C44C5690011C12C /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9B0A948D2C44C5690011C12C /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E4277EF72C3E25410040CBEC /* Project object */;
 }
