@@ -23,17 +23,9 @@ struct FSCalendarView: UIViewRepresentable {
         calendar.dataSource = context.coordinator
         calendar.appearance.selectionColor = .systemPurple
         // Remove today circle
-//        calendar.today = nil
         calendar.scope = .week
         calendar.appearance.headerTitleColor = .gray
         calendar.appearance.weekdayTextColor = .gray
-
-//        // Calculate the total height needed for the calendar
-//        let totalHeight = 100 + calendar.headerHeight + calendar.weekdayHeight
-//
-//        // Set the static height constraint
-//        calendar.translatesAutoresizingMaskIntoConstraints = false
-//        calendar.heightAnchor.constraint(equalToConstant: totalHeight).isActive = true
         
         return calendar
     }
@@ -56,6 +48,16 @@ struct FSCalendarView: UIViewRepresentable {
             self.parent = calender
 //            self.habit = habit
 //            self.dates = habit.getCompletionDates()
+        }
+        
+        // Disable dates after today
+        func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
+            return date <= Date()
+        }
+        
+        // Change title color for future dates to grey
+        func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
+            return date > Date() ? .lightGray : nil
         }
         
         func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {

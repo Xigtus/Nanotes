@@ -10,7 +10,6 @@ import SwiftData
 
 @Model
 final class HabitModel {
-
     var habitName: String
     var habitStartDate: Date
     var habitEndDate: Date
@@ -58,10 +57,40 @@ final class HabitModel {
         return date
     }
 
+    func iterateDates(from startDate: Date, to endDate: Date, calendar: Calendar = .current) -> [Date] {
+        var dates: [Date] = []
+        var currentDate = startDate
+
+        while currentDate <= endDate {
+            dates.append(currentDate)
+            guard let nextDate = calendar.date(byAdding: .day, value: 1, to: currentDate) else { break }
+            currentDate = nextDate
+        }
+
+        return dates
+    }
+
     func addNotes() {
-        // Dummy Note
-        let note = HNoteModel(lastModified: HabitModel.getDateFromString("2024-06-29 06:30:00")!, habit: self, date: HabitModel.getDateFromString("2024-07-14 06:30:00")!, content: "Hello this is note from June 27, i write this note as dummy data 1")
-        modelContext?.insert(note)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+
+        let startDate = self.habitStartDate
+        let endDate = self.habitEndDate
+
+        let dates = self.iterateDates(from: startDate, to: endDate)
+        print(dates)
+
+        for date in dates {
+            let note = HNoteModel(lastModified: Date(), habit: self, date: date, content: "Note for \(dateFormatter.string(from: date))")
+            modelContext?.insert(note)
+        }
+
+        do {
+            try modelContext?.save()
+        } catch {
+            print("Failed to save context: \(error)")
+        }
     }
 
     func getNotesByDate(_ date: Date) -> [HNoteModel] {
