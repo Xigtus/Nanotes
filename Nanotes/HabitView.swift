@@ -56,7 +56,7 @@ struct HabitView: View {
 	}
 	
 	var completedHabits: [HabitModel] {
-		let completed = allHabits.filter { $0.habitIsCompleted && Calendar.current.isDateInToday($0.habitTime) }
+		let completed = allHabits.filter { $0.habitIsCompleted && isHabitDueToday(habit: $0) }
 		
 		if searchQuery.isEmpty {
 			return completed
