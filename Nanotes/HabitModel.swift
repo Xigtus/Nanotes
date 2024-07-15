@@ -12,6 +12,7 @@ import SwiftData
 final class HabitModel {
 	var habitName: String
 	var habitStartDate: Date
+	var habitEndDate: Date
 	var habitRepeat: String
 	var habitTime: Date
 	var habitAlert: String
@@ -21,6 +22,7 @@ final class HabitModel {
 	
 	init(habitName: String = "",
 		 habitStartDate: Date = .now,
+		 habitEndDate: Date = .now,
 		 habitRepeat: String = "Every Day",
 		 habitTime: Date = .now,
 		 habitAlert: String = "None",
@@ -29,6 +31,7 @@ final class HabitModel {
 		 lastCompletionDate: Date? = nil) {
 		self.habitName = habitName
 		self.habitStartDate = habitStartDate
+		self.habitEndDate = habitEndDate
 		self.habitRepeat = habitRepeat
 		self.habitTime = habitTime
 		self.habitAlert = habitAlert
