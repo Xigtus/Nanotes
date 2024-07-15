@@ -10,7 +10,10 @@ import SwiftUI
 
 struct HabitView: View {
     @Environment(\.modelContext) var modelContext
-	
+    @State private var selectedDate = Date()
+    
+//    @State var habit = HabitModel()
+
     @State private var showAddHabit = false
     @State private var searchQuery = ""
 	
@@ -54,8 +57,8 @@ struct HabitView: View {
         }
     }
 	
-	var completedHabits: [HabitModel] {
-		let completed = allHabits.filter { $0.habitIsCompleted && isHabitDueToday(habit: $0) }
+    var completedHabits: [HabitModel] {
+        let completed = allHabits.filter { $0.habitIsCompleted && isHabitDueToday(habit: $0) }
 		
         if searchQuery.isEmpty {
             return completed
@@ -79,13 +82,16 @@ struct HabitView: View {
                     Section {
                         Text("Today's To-do Habits")
                             .font(.title2)
-                            .fontWeight(/*@START_MENU_TOKEN@*/ .bold/*@END_MENU_TOKEN@*/)
+                            .fontWeight(.bold)
 						
                         Text("\(todoCount) remaining")
                             .font(.callout)
                             .foregroundStyle(.secondary)
                             .offset(y: -15)
-						
+                        
+//                        FSCalendarView(selectedDate: $selectedDate, habit: $habit)
+                        FSCalendarView(selectedDate: $selectedDate).frame(height: 300)
+
                         ForEach(filteredTodo) { todo in
                             HStack {
                                 Button {
@@ -333,6 +339,6 @@ struct HabitView: View {
     }
 }
 
-#Preview {
-    HabitView()
-}
+// #Preview {
+//    HabitView()
+// }

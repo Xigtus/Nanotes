@@ -15,8 +15,11 @@ struct HabitDetailView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                FSCalendarView(selectedDate: $selectedDate, habit: $habit)
+                FSCalendarView(selectedDate: $selectedDate)
                     .frame(height: 338)
+
+//                FSCalendarView(selectedDate: $selectedDate, habit: $habit)
+//                    .frame(height: 338)
 
                 Divider()
 

@@ -10,10 +10,11 @@ import SwiftUI
 
 struct FSCalendarView: UIViewRepresentable {
     @Binding var selectedDate: Date
-    @Binding var habit: HabitModel
+//    @Binding var habit: HabitModel
 
     func makeCoordinator() -> Coordinator {
-        Coordinator(self, habit: habit)
+//        Coordinator(self, habit: habit)
+        Coordinator(self)
     }
     
     func makeUIView(context: Context) -> FSCalendar {
@@ -22,7 +23,18 @@ struct FSCalendarView: UIViewRepresentable {
         calendar.dataSource = context.coordinator
         calendar.appearance.selectionColor = .systemPurple
         // Remove today circle
-        calendar.today = nil
+//        calendar.today = nil
+        calendar.scope = .week
+        calendar.appearance.headerTitleColor = .gray
+        calendar.appearance.weekdayTextColor = .gray
+
+//        // Calculate the total height needed for the calendar
+//        let totalHeight = 100 + calendar.headerHeight + calendar.weekdayHeight
+//
+//        // Set the static height constraint
+//        calendar.translatesAutoresizingMaskIntoConstraints = false
+//        calendar.heightAnchor.constraint(equalToConstant: totalHeight).isActive = true
+        
         return calendar
     }
     
@@ -35,27 +47,28 @@ struct FSCalendarView: UIViewRepresentable {
     class Coordinator: NSObject, FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance {
         var parent: FSCalendarView
         
-        var habit: HabitModel
+//        var habit: HabitModel
         
-        var dates: [Date]
+//        var dates: [Date]
         
-        init(_ calender: FSCalendarView, habit: HabitModel) {
+//        init(_ calender: FSCalendarView, habit: HabitModel) {
+        init(_ calender: FSCalendarView) {
             self.parent = calender
-            self.habit = habit
-            self.dates = habit.getCompletionDates()
+//            self.habit = habit
+//            self.dates = habit.getCompletionDates()
         }
         
         func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
             parent.selectedDate = date
         }
         
-        func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
-            if dates.contains(where: { Calendar.current.isDate($0, inSameDayAs: date) }) {
-                // Replace "completionImageName" with the actual image name you want to use
-                return UIImage(named: "Ellipse")
-            }
-            return nil
-        }
+//        func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
+//            if dates.contains(where: { Calendar.current.isDate($0, inSameDayAs: date) }) {
+//                // Replace "completionImageName" with the actual image name you want to use
+//                return UIImage(named: "Ellipse")
+//            }
+//            return nil
+//        }
         
         // Need reload to have fill colors display correctly after calendar page changes
         func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
