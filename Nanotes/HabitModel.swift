@@ -18,6 +18,7 @@ final class HabitModel {
     var habitIsCompleted: Bool
     var habitStreak: Int
     var habitLastCompletionDate: Date?
+    var habitCompletionDates: [Date]
 
     @Relationship(deleteRule: .cascade, inverse: \HNoteModel.habit) var notes: [HNoteModel]
 
@@ -40,6 +41,7 @@ final class HabitModel {
         self.habitStreak = habitStreak
         self.habitLastCompletionDate = lastCompletionDate
         self.notes = []
+        self.habitCompletionDates = []
     }
 
     static func getDateFromString(_ dateString: String) -> Date? {
@@ -54,11 +56,19 @@ final class HabitModel {
 
     func addNotes() {
         // Dummy Note
-        let note = HNoteModel(lastModified: HabitModel.getDateFromString("2024-06-29 06:30:00")!, habit: self, date: HabitModel.getDateFromString("2024-06-27 06:30:00")!, content: "Hello this is note from June 27, i write this note as dummy data 1")
+        let note = HNoteModel(lastModified: HabitModel.getDateFromString("2024-06-29 06:30:00")!, habit: self, date: HabitModel.getDateFromString("2024-07-14 06:30:00")!, content: "Hello this is note from June 27, i write this note as dummy data 1")
         modelContext?.insert(note)
     }
 
     func getNotesByDate(_ date: Date) -> [HNoteModel] {
-        return notes.filter { Calendar.current.isDate($0.date, inSameDayAs: date) }
+        return self.notes.filter { Calendar.current.isDate($0.date, inSameDayAs: date) }
+    }
+
+    func getCompletionDates() -> [Date] {
+        for note in self.notes {
+            self.habitCompletionDates.append(note.date)
+        }
+
+        return self.habitCompletionDates
     }
 }

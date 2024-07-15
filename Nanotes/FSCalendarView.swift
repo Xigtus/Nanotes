@@ -37,9 +37,12 @@ struct FSCalendarView: UIViewRepresentable {
         
         var habit: HabitModel
         
+        var dates: [Date]
+        
         init(_ calender: FSCalendarView, habit: HabitModel) {
             self.parent = calender
             self.habit = habit
+            self.dates = habit.getCompletionDates()
         }
         
         func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -47,10 +50,9 @@ struct FSCalendarView: UIViewRepresentable {
         }
         
         func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
-            if date.compare(Date()).rawValue >= 0 {
-                
-                // TODO: change this
-                return UIImage(named: "a")
+            if dates.contains(where: { Calendar.current.isDate($0, inSameDayAs: date) }) {
+                // Replace "completionImageName" with the actual image name you want to use
+                return UIImage(named: "Ellipse")
             }
             return nil
         }
