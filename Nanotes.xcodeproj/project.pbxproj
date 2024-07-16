@@ -7,7 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B2B98A62C46763600FB28D6 /* HabitListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B98A52C46763600FB28D6 /* HabitListViewModel.swift */; };
+		8B2B98A82C46765900FB28D6 /* HabitRowComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B98A72C46765900FB28D6 /* HabitRowComponent.swift */; };
+		8B2B98AC2C46769500FB28D6 /* HabitTodoRowComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B98AB2C46769500FB28D6 /* HabitTodoRowComponent.swift */; };
+		8B2B98B02C4676CB00FB28D6 /* HabbitCompletedRowComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B98AF2C4676CB00FB28D6 /* HabbitCompletedRowComponent.swift */; };
+		8B2B98B22C46791000FB28D6 /* TodoHabitComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B98B12C46791000FB28D6 /* TodoHabitComponent.swift */; };
+		8B2B98B42C46793500FB28D6 /* CompletedHabitComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B98B32C46793500FB28D6 /* CompletedHabitComponent.swift */; };
 		8BCDDD2D2C40DE8000DA2F38 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8BCDDD2C2C40DE8000DA2F38 /* .gitignore */; };
+		8BCDDD302C454E4D00DA2F38 /* CreateHabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCDDD2F2C454E4D00DA2F38 /* CreateHabitViewModel.swift */; };
+		8BCDDD332C454E6500DA2F38 /* TimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCDDD322C454E6500DA2F38 /* TimeHelper.swift */; };
+		8BCDDD3D2C45548F00DA2F38 /* HabitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCDDD3C2C45548F00DA2F38 /* HabitHelper.swift */; };
+		8BCDDD452C4562D600DA2F38 /* HabitNameComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCDDD442C4562D600DA2F38 /* HabitNameComponent.swift */; };
+		8BCDDD472C45649F00DA2F38 /* HabitDatePickerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCDDD462C45649F00DA2F38 /* HabitDatePickerComponent.swift */; };
+		8BCDDD492C4565B800DA2F38 /* HabitRepeatComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCDDD482C4565B800DA2F38 /* HabitRepeatComponent.swift */; };
+		8BCDDD4C2C45663500DA2F38 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCDDD4B2C45663500DA2F38 /* Constant.swift */; };
+		8BCDDD4E2C45675800DA2F38 /* HabitAlertComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCDDD4D2C45675800DA2F38 /* HabitAlertComponent.swift */; };
+		8BCDDD512C456C6F00DA2F38 /* HabitViewNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCDDD502C456C6F00DA2F38 /* HabitViewNew.swift */; };
+		8BCDDD542C460FDE00DA2F38 /* SwiftDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCDDD532C460FDE00DA2F38 /* SwiftDataProtocol.swift */; };
+		8BCDDD582C46169200DA2F38 /* HabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCDDD572C46169200DA2F38 /* HabitViewModel.swift */; };
 		9B0A94882C44C2020011C12C /* HNoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0A94872C44C2020011C12C /* HNoteModel.swift */; };
 		9B0A948A2C44C4C60011C12C /* HabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0A94892C44C4C60011C12C /* HabitDetailView.swift */; };
 		9B0A948C2C44C5540011C12C /* FSCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0A948B2C44C5540011C12C /* FSCalendarView.swift */; };
@@ -22,7 +39,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B2B98A52C46763600FB28D6 /* HabitListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HabitListViewModel.swift; path = ../View/HabitListViewModel.swift; sourceTree = "<group>"; };
+		8B2B98A72C46765900FB28D6 /* HabitRowComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitRowComponent.swift; sourceTree = "<group>"; };
+		8B2B98AB2C46769500FB28D6 /* HabitTodoRowComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTodoRowComponent.swift; sourceTree = "<group>"; };
+		8B2B98AF2C4676CB00FB28D6 /* HabbitCompletedRowComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbitCompletedRowComponent.swift; sourceTree = "<group>"; };
+		8B2B98B12C46791000FB28D6 /* TodoHabitComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoHabitComponent.swift; sourceTree = "<group>"; };
+		8B2B98B32C46793500FB28D6 /* CompletedHabitComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedHabitComponent.swift; sourceTree = "<group>"; };
 		8BCDDD2C2C40DE8000DA2F38 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		8BCDDD2F2C454E4D00DA2F38 /* CreateHabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHabitViewModel.swift; sourceTree = "<group>"; };
+		8BCDDD322C454E6500DA2F38 /* TimeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeHelper.swift; sourceTree = "<group>"; };
+		8BCDDD3C2C45548F00DA2F38 /* HabitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitHelper.swift; sourceTree = "<group>"; };
+		8BCDDD442C4562D600DA2F38 /* HabitNameComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitNameComponent.swift; sourceTree = "<group>"; };
+		8BCDDD462C45649F00DA2F38 /* HabitDatePickerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDatePickerComponent.swift; sourceTree = "<group>"; };
+		8BCDDD482C4565B800DA2F38 /* HabitRepeatComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitRepeatComponent.swift; sourceTree = "<group>"; };
+		8BCDDD4B2C45663500DA2F38 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		8BCDDD4D2C45675800DA2F38 /* HabitAlertComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitAlertComponent.swift; sourceTree = "<group>"; };
+		8BCDDD502C456C6F00DA2F38 /* HabitViewNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewNew.swift; sourceTree = "<group>"; };
+		8BCDDD532C460FDE00DA2F38 /* SwiftDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataProtocol.swift; sourceTree = "<group>"; };
+		8BCDDD572C46169200DA2F38 /* HabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewModel.swift; sourceTree = "<group>"; };
 		9B0A94872C44C2020011C12C /* HNoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNoteModel.swift; sourceTree = "<group>"; };
 		9B0A94892C44C4C60011C12C /* HabitDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailView.swift; sourceTree = "<group>"; };
 		9B0A948B2C44C5540011C12C /* FSCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCalendarView.swift; sourceTree = "<group>"; };
@@ -48,6 +82,79 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B2B98B52C467A6600FB28D6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E4DF2B422C401A91007C41D8 /* HabitModel.swift */,
+				9B0A94872C44C2020011C12C /* HNoteModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8BCDDD2E2C454E2100DA2F38 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8B2B98A52C46763600FB28D6 /* HabitListViewModel.swift */,
+				8BCDDD2F2C454E4D00DA2F38 /* CreateHabitViewModel.swift */,
+				8BCDDD572C46169200DA2F38 /* HabitViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8BCDDD312C454E5700DA2F38 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				8BCDDD322C454E6500DA2F38 /* TimeHelper.swift */,
+				8BCDDD3C2C45548F00DA2F38 /* HabitHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		8BCDDD432C4562BF00DA2F38 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				8BCDDD442C4562D600DA2F38 /* HabitNameComponent.swift */,
+				8BCDDD462C45649F00DA2F38 /* HabitDatePickerComponent.swift */,
+				8BCDDD482C4565B800DA2F38 /* HabitRepeatComponent.swift */,
+				8BCDDD4D2C45675800DA2F38 /* HabitAlertComponent.swift */,
+				8B2B98B12C46791000FB28D6 /* TodoHabitComponent.swift */,
+				8B2B98B32C46793500FB28D6 /* CompletedHabitComponent.swift */,
+				8B2B98A72C46765900FB28D6 /* HabitRowComponent.swift */,
+				8B2B98AB2C46769500FB28D6 /* HabitTodoRowComponent.swift */,
+				8B2B98AF2C4676CB00FB28D6 /* HabbitCompletedRowComponent.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		8BCDDD4A2C45662000DA2F38 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				8BCDDD4B2C45663500DA2F38 /* Constant.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		8BCDDD4F2C456C5C00DA2F38 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8BCDDD502C456C6F00DA2F38 /* HabitViewNew.swift */,
+				E4DF2B442C401B64007C41D8 /* AddHabitView.swift */,
+				9B0A94892C44C4C60011C12C /* HabitDetailView.swift */,
+				E4277F042C3E25410040CBEC /* HabitView.swift */,
+				9B0A948B2C44C5540011C12C /* FSCalendarView.swift */,
+				9B0A94902C44CB350011C12C /* HNotePerDayView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8BCDDD522C460FCD00DA2F38 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				8BCDDD532C460FDE00DA2F38 /* SwiftDataProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		E4277EF62C3E25410040CBEC = {
 			isa = PBXGroup;
 			children = (
@@ -68,14 +175,14 @@
 		E4277F012C3E25410040CBEC /* Nanotes */ = {
 			isa = PBXGroup;
 			children = (
+				8B2B98B52C467A6600FB28D6 /* Model */,
+				8BCDDD522C460FCD00DA2F38 /* Protocol */,
+				8BCDDD4F2C456C5C00DA2F38 /* View */,
+				8BCDDD4A2C45662000DA2F38 /* Constant */,
+				8BCDDD432C4562BF00DA2F38 /* Components */,
+				8BCDDD312C454E5700DA2F38 /* Helper */,
+				8BCDDD2E2C454E2100DA2F38 /* ViewModel */,
 				E4277F022C3E25410040CBEC /* NanotesApp.swift */,
-				E4277F042C3E25410040CBEC /* HabitView.swift */,
-				9B0A94892C44C4C60011C12C /* HabitDetailView.swift */,
-				9B0A948B2C44C5540011C12C /* FSCalendarView.swift */,
-				9B0A94902C44CB350011C12C /* HNotePerDayView.swift */,
-				E4DF2B442C401B64007C41D8 /* AddHabitView.swift */,
-				E4DF2B422C401A91007C41D8 /* HabitModel.swift */,
-				9B0A94872C44C2020011C12C /* HNoteModel.swift */,
 				E4277F062C3E25430040CBEC /* Assets.xcassets */,
 				E4277F082C3E25430040CBEC /* Preview Content */,
 			);
@@ -167,11 +274,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BCDDD542C460FDE00DA2F38 /* SwiftDataProtocol.swift in Sources */,
 				9B0A94882C44C2020011C12C /* HNoteModel.swift in Sources */,
+				8BCDDD4C2C45663500DA2F38 /* Constant.swift in Sources */,
+				8BCDDD492C4565B800DA2F38 /* HabitRepeatComponent.swift in Sources */,
+				8B2B98B02C4676CB00FB28D6 /* HabbitCompletedRowComponent.swift in Sources */,
 				E4DF2B432C401A91007C41D8 /* HabitModel.swift in Sources */,
+				8BCDDD582C46169200DA2F38 /* HabitViewModel.swift in Sources */,
+				8B2B98A62C46763600FB28D6 /* HabitListViewModel.swift in Sources */,
 				9B0A948A2C44C4C60011C12C /* HabitDetailView.swift in Sources */,
+				8BCDDD3D2C45548F00DA2F38 /* HabitHelper.swift in Sources */,
+				8BCDDD472C45649F00DA2F38 /* HabitDatePickerComponent.swift in Sources */,
 				E4DF2B452C401B64007C41D8 /* AddHabitView.swift in Sources */,
+				8BCDDD4E2C45675800DA2F38 /* HabitAlertComponent.swift in Sources */,
+				8BCDDD302C454E4D00DA2F38 /* CreateHabitViewModel.swift in Sources */,
 				E4277F052C3E25410040CBEC /* HabitView.swift in Sources */,
+				8B2B98A82C46765900FB28D6 /* HabitRowComponent.swift in Sources */,
+				8B2B98B22C46791000FB28D6 /* TodoHabitComponent.swift in Sources */,
+				8B2B98AC2C46769500FB28D6 /* HabitTodoRowComponent.swift in Sources */,
+				8BCDDD452C4562D600DA2F38 /* HabitNameComponent.swift in Sources */,
+				8BCDDD512C456C6F00DA2F38 /* HabitViewNew.swift in Sources */,
+				8B2B98B42C46793500FB28D6 /* CompletedHabitComponent.swift in Sources */,
+				8BCDDD332C454E6500DA2F38 /* TimeHelper.swift in Sources */,
 				9B0A948C2C44C5540011C12C /* FSCalendarView.swift in Sources */,
 				9B0A94912C44CB350011C12C /* HNotePerDayView.swift in Sources */,
 				E4277F032C3E25410040CBEC /* NanotesApp.swift in Sources */,
@@ -308,7 +432,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Nanotes/Preview Content\"";
-				DEVELOPMENT_TEAM = 749DSANFYP;
+				DEVELOPMENT_TEAM = U5CZ6K98KV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -337,7 +461,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Nanotes/Preview Content\"";
-				DEVELOPMENT_TEAM = 749DSANFYP;
+				DEVELOPMENT_TEAM = U5CZ6K98KV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

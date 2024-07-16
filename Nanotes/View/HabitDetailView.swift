@@ -9,43 +9,32 @@ import SwiftUI
 
 struct HabitDetailView: View {
     @State private var selectedDate = Date()
+    
+    private var timeHelper = TimeHelper.shared
 
     @State var habit: HabitModel
 
+    init(habit: HabitModel) {
+            self._habit = State(initialValue: habit)
+        }
+
+    
     var body: some View {
         NavigationView {
             ScrollView {
                 FSCalendarView(selectedDate: $selectedDate)
                     .frame(height: 338)
 
-//                FSCalendarView(selectedDate: $selectedDate, habit: $habit)
-//                    .frame(height: 338)
-
                 Divider()
-
+                
                 HStack {
                     Text("Today")
-                    Text(selectedDate.formatted("dd MMMM yyyy"))
+                    Text(timeHelper.formatTimeToString("dd MMMM yyyy", date: selectedDate))
                 }.foregroundColor(.accentColor)
 
                 HNotePerDayView(habit: habit, date: selectedDate)
 
             }.navigationTitle("\(habit.habitName)")
-//                .onAppear {
-//                    habit.addNotes()
-//                }
         }
     }
 }
-
-extension Date {
-    func formatted(_ format: String) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = format
-        return formatter.string(from: self)
-    }
-}
-
-// #Preview {
-//    HabitDetailView(habit: HabitModel())
-// }

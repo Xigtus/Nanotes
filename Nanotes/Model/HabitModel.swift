@@ -10,7 +10,7 @@ import SwiftData
 
 @Model
 final class HabitModel {
-
+    var uuid: String
     var habitName: String
     var habitStartDate: Date
     var habitEndDate: Date
@@ -35,6 +35,7 @@ final class HabitModel {
          lastCompletionDate: Date? = nil,
          notes: [HNoteModel] = [])
     {
+        self.uuid = UUID().uuidString
         self.habitName = habitName
         self.habitStartDate = habitStartDate
         self.habitEndDate = habitEndDate
