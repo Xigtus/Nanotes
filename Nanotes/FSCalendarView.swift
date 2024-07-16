@@ -20,9 +20,12 @@ struct FSCalendarView: UIViewRepresentable {
         let calendar = FSCalendar()
         calendar.delegate = context.coordinator
         calendar.dataSource = context.coordinator
-        calendar.appearance.selectionColor = .systemPurple
+//        calendar.appearance.selectionColor = .systemPurple
         // Remove today circle
-        calendar.today = nil
+//        calendar.today = nil
+        calendar.appearance.headerTitleColor = .gray
+        calendar.appearance.weekdayTextColor = .gray
+
         return calendar
     }
     
@@ -47,6 +50,16 @@ struct FSCalendarView: UIViewRepresentable {
         
         func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
             parent.selectedDate = date
+        }
+        
+        // Disable dates after today
+        func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
+            return date <= Date()
+        }
+               
+        // Change title color for future dates to grey
+        func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
+            return date > Date() ? .lightGray : nil
         }
         
         func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {

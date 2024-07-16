@@ -91,6 +91,7 @@ struct HabitView: View {
                                 Button {
                                     withAnimation {
                                         todo.habitIsCompleted.toggle()
+                                        
                                         updateStreak(for: todo)
                                     }
 									

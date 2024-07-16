@@ -54,11 +54,15 @@ final class HabitModel {
         return date
     }
 
-    func addNotes() {
-        // Dummy Note
-        let note = HNoteModel(lastModified: HabitModel.getDateFromString("2024-06-29 06:30:00")!, habit: self, date: HabitModel.getDateFromString("2024-07-14 06:30:00")!, content: "Hello this is note from June 27, i write this note as dummy data 1")
-        modelContext?.insert(note)
-    }
+//    func addNotes() {
+//        // Dummy Note
+//        let note = HNoteModel(lastModified: HabitModel.getDateFromString("2024-06-29 06:30:00")!, habit: self, date: HabitModel.getDateFromString("2024-07-14 06:30:00")!, content: "Hello this is note from June 27, i write this note as dummy data 1")
+//        modelContext?.insert(note)
+//    }
+//
+//    func addNotes(note: HNoteModel) {
+//        modelContext?.insert(note)
+//    }
 
     func getNotesByDate(_ date: Date) -> [HNoteModel] {
         return self.notes.filter { Calendar.current.isDate($0.date, inSameDayAs: date) }
