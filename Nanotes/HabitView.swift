@@ -9,66 +9,67 @@ import SwiftData
 import SwiftUI
 
 struct HabitView: View {
-    @Environment(\.modelContext) var modelContext
 	
-    @State private var showAddHabit = false
-    @State private var searchQuery = ""
+	@Environment(\.modelContext) var modelContext
 	
-    @Query(sort: \HabitModel.habitTime, order: .forward) private var allHabits: [HabitModel]
+	@State private var showAddHabit = false
+	@State private var searchQuery = ""
 	
-    private var noteCount: Int {
-        filteredHabits.count
-    }
+	@Query(sort: \HabitModel.habitTime, order: .forward) private var allHabits: [HabitModel]
 	
-    private var todoCount: Int {
-        filteredTodo.count
-    }
+	private var noteCount: Int {
+		filteredHabits.count
+	}
 	
-    private var completedCount: Int {
-        completedHabits.count
-    }
+	private var todoCount: Int {
+		filteredTodo.count
+	}
 	
-    var filteredHabits: [HabitModel] {
-        if searchQuery.isEmpty {
-            return allHabits
-        }
+	private var completedCount: Int {
+		completedHabits.count
+	}
+	
+	var filteredHabits: [HabitModel] {
+		if searchQuery.isEmpty {
+			return allHabits
+		}
 		
-        let filteredHabits = allHabits.compactMap { habit in
-            let habitContainsQuery = habit.habitName.range(of: searchQuery, options: .caseInsensitive) != nil
+		let filteredHabits = allHabits.compactMap { habit in
+			let habitContainsQuery = habit.habitName.range(of: searchQuery, options: .caseInsensitive) != nil
 			
-            return habitContainsQuery ? habit : nil
-        }
+			return habitContainsQuery ? habit : nil
+		}
 		
-        return filteredHabits
-    }
+		return filteredHabits
+	}
 	
-    var filteredTodo: [HabitModel] {
-        let uncompletedHabits = allHabits.filter { !$0.habitIsCompleted && isHabitDueToday(habit: $0) }
+	var filteredTodo: [HabitModel] {
+		let uncompletedHabits = allHabits.filter { !$0.habitIsCompleted && isHabitDueToday(habit: $0) }
 		
-        if searchQuery.isEmpty {
-            return uncompletedHabits
-        }
+		if searchQuery.isEmpty {
+			return uncompletedHabits
+		}
 		
-        return uncompletedHabits.filter { todo in
-            todo.habitName.range(of: searchQuery, options: .caseInsensitive) != nil
-        }
-    }
+		return uncompletedHabits.filter { todo in
+			todo.habitName.range(of: searchQuery, options: .caseInsensitive) != nil
+		}
+	}
 	
-    var completedHabits: [HabitModel] {
-        let completed = allHabits.filter { $0.habitIsCompleted && Calendar.current.isDateInToday($0.habitTime) }
+	var completedHabits: [HabitModel] {
+		let completed = allHabits.filter { $0.habitIsCompleted && isHabitDueToday(habit: $0) }
 		
-        if searchQuery.isEmpty {
-            return completed
-        }
+		if searchQuery.isEmpty {
+			return completed
+		}
 		
-        let filteredCompleted = completed.compactMap { habit in
-            let habitContainsQuery = habit.habitName.range(of: searchQuery, options: .caseInsensitive) != nil
+		let filteredCompleted = completed.compactMap { habit in
+			let habitContainsQuery = habit.habitName.range(of: searchQuery, options: .caseInsensitive) != nil
 			
-            return habitContainsQuery ? habit : nil
-        }
+			return habitContainsQuery ? habit : nil
+		}
 		
-        return filteredCompleted
-    }
+		return filteredCompleted
+	}
 	
     var body: some View {
         NavigationStack {
@@ -245,93 +246,117 @@ struct HabitView: View {
                     })
                 }
 				
-                ToolbarItemGroup(placement: .bottomBar) {
-                    Spacer()
-                    Text("\(noteCount) Notes")
-                        .font(.caption)
-                    Spacer()
-                    Button(action: {
-                        showAddHabit.toggle()
-                    }, label: {
-                        Label("Add Habit", systemImage: "square.and.pencil")
-                    })
-                }
-            }
-            .sheet(isPresented: $showAddHabit,
-                   content: {
-                       NavigationStack {
-                           AddHabitView()
-                       }
-                       .presentationDetents([.large])
-                   })
-        }
-        .searchable(text: $searchQuery, prompt: "Search")
+				ToolbarItemGroup(placement: .bottomBar) {
+					Spacer()
+					Text ("\(noteCount) Notes")
+						.font(.caption)
+					Spacer()
+					Button(action: {
+						showAddHabit.toggle()
+					}, label: {
+						Label("Add Habit", systemImage: "square.and.pencil")
+					})
+				}
+			}
+			.sheet(isPresented: $showAddHabit,
+				   content: {
+				NavigationStack {
+					AddHabitView()
+				}
+				.presentationDetents([.large])
+			})
+			.onAppear() {
+				for habit in allHabits {
+					if isHabitDueToday(habit: habit) {
+						resetCompletionStatus(for: habit)
+					}
+				}
+			}
+		}
+		.searchable(text: $searchQuery, prompt: "Search")
     }
 	
-    func isHabitDueToday(habit: HabitModel) -> Bool {
-        let calendar = Calendar.current
-        let today = Date()
+	func isHabitDueToday(habit: HabitModel) -> Bool {
+		let calendar = Calendar.current
+		let today = calendar.startOfDay(for: Date()) // Start of today
 		
-        switch habit.habitRepeat.lowercased() {
-            case "every day":
-                return true
-            case "every week":
-                let habitDay = calendar.component(.weekday, from: habit.habitTime)
-                let todayDay = calendar.component(.weekday, from: today)
-                return habitDay == todayDay
-            default:
-                return false
-        }
-    }
+		let habitTime = calendar.startOfDay(for: habit.habitTime)
+		
+		switch habit.habitRepeat.lowercased() {
+			case "every day":
+				// Check if habitTime is today
+				if Date() >= habitTime {
+					return true
+				}
+				return false
+			case "every week":
+				let habitDay = calendar.component(.weekday, from: habit.habitTime)
+				let todayDay = calendar.component(.weekday, from: today)
+				return habitDay == todayDay
+			default:
+				return false
+		}
+	}
 	
-    func updateStreak(for habit: HabitModel) {
-        let calendar = Calendar.current
-        let today = calendar.startOfDay(for: Date())
+	func updateStreak(for habit: HabitModel) {
+		let calendar = Calendar.current
+		let today = calendar.startOfDay(for: Date())
 		
-        guard let lastDate = habit.habitLastCompletionDate else {
-            if habit.habitIsCompleted {
-                habit.habitStreak += 1
-                habit.habitLastCompletionDate = today
-            }
-            return
-        }
+		guard let lastDate = habit.habitLastCompletionDate else {
+			if habit.habitIsCompleted {
+				habit.habitStreak += 1
+				habit.habitLastCompletionDate = today
+			}
+			return
+		}
 		
-        let lastCompletion = calendar.startOfDay(for: lastDate)
-        let daysDifference = calendar.dateComponents([.day], from: lastCompletion, to: today).day ?? 0
+		let lastCompletion = calendar.startOfDay(for: lastDate)
+		let daysDifference = calendar.dateComponents([.day], from: lastCompletion, to: today).day ?? 0
+		let weeksDifference = calendar.dateComponents([.weekOfYear], from: lastCompletion, to: today).weekOfYear ?? 0
 		
-        if habit.habitIsCompleted {
-            if daysDifference == 1 {
-                habit.habitStreak += 1
-                habit.habitLastCompletionDate = today
-            } else if daysDifference > 1 {
-                habit.habitStreak = 1
-                habit.habitLastCompletionDate = today
-            }
-        } else {
-            if daysDifference == 0 {
-                habit.habitStreak -= 1
-                habit.habitLastCompletionDate = nil
-            }
-        }
-    }
+		if habit.habitIsCompleted {
+			if habit.habitRepeat.lowercased() == "every day" {
+				if daysDifference == 1 {
+					habit.habitStreak += 1
+					habit.habitLastCompletionDate = today
+				} else if daysDifference > 1 {
+					habit.habitStreak = 1
+					habit.habitLastCompletionDate = today
+				}
+			} else if habit.habitRepeat.lowercased() == "every week" {
+				if weeksDifference == 1 {
+					habit.habitStreak += 1
+					habit.habitLastCompletionDate = today
+				} else if weeksDifference > 1 {
+					habit.habitStreak = 1
+					habit.habitLastCompletionDate = today
+				}
+			}
+		} else {
+			if daysDifference == 0 || (habit.habitRepeat.lowercased() == "every week" && weeksDifference == 0) {
+				habit.habitStreak -= 1
+				habit.habitLastCompletionDate = nil
+			}
+		}
+	}
 	
-    func resetCompletionStatus(for habit: HabitModel) {
-        let calendar = Calendar.current
-        let today = Date()
+	func resetCompletionStatus(for habit: HabitModel) {
+		let calendar = Calendar.current
+		let today = Date()
 		
-        switch habit.habitRepeat.lowercased() {
-            case "every day":
-                habit.habitIsCompleted = false
-            case "every week":
-                let habitDay = calendar.component(.weekday, from: habit.habitTime)
-                let todayDay = calendar.component(.weekday, from: today)
-                if habitDay != todayDay {
-                    habit.habitIsCompleted = false
-                }
-            default:
-                break
-        }
-    }
+		switch habit.habitRepeat.lowercased() {
+			case "every day":
+				habit.habitIsCompleted = false
+			case "every week":
+				let habitDay = calendar.component(.weekday, from: habit.habitTime)
+				let todayDay = calendar.component(.weekday, from: today)
+				if habitDay == todayDay {
+					habit.habitIsCompleted = false
+				}
+			default:
+				break
+		}
+	}
 }
 
 #Preview {
