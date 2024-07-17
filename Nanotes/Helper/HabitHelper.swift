@@ -16,7 +16,7 @@ class HabitHelper {
         
         switch habit.habitRepeat.lowercased() {
             case "every day":
-                return true
+            return Date() >= calendar.startOfDay(for: habit.habitTime)
             case "every week":
                 let habitDay = calendar.component(.weekday, from: habit.habitTime)
                 let todayDay = calendar.component(.weekday, from: today)

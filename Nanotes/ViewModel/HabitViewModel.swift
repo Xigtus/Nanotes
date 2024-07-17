@@ -23,6 +23,7 @@ struct HabitViewModel: View {
     
     private func refreshHabits() {
         allHabits = habitService.GetAllHabit()
+        print("test-test", allHabits)
     }
 
     private var noteCount: Int {

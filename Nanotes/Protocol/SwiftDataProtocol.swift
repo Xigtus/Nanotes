@@ -44,12 +44,12 @@ class SwiftDataHabitService: ObservableObject, SwiftDataHabitProtocols {
     
     func GetCompletedHabit(date: Date) -> [HabitModel] {
         let allHabits = GetAllHabit()
-        return allHabits.filter { $0.habitIsCompleted && date == $0.habitStartDate}
+        return allHabits.filter { $0.habitIsCompleted && date >= $0.habitTime}
     }
     
     func GetToDoHabit(date: Date) -> [HabitModel] {
         let allHabits = GetAllHabit()
-        return allHabits.filter { $0.habitIsCompleted && date == $0.habitStartDate}
+        return allHabits.filter { !$0.habitIsCompleted && date >= $0.habitTime}
     }
     
     func GetHabitDetailById(id: String) -> HabitModel? {
