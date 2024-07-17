@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class HabitModel {
+final class HabitModel: ObservableObject {
     var uuid: String
     var habitName: String
     var habitStartDate: Date

@@ -28,6 +28,8 @@ class SwiftDataHabitService: ObservableObject, SwiftDataHabitProtocols {
     private let modelContainer: ModelContainer
     private let modelContext: ModelContext
     
+    private var habitHelper = HabitHelper.shared
+
     @MainActor
     init() {
         self.modelContainer = try! ModelContainer(for: HabitModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: false))
@@ -44,17 +46,18 @@ class SwiftDataHabitService: ObservableObject, SwiftDataHabitProtocols {
     
     func GetCompletedHabit(date: Date) -> [HabitModel] {
         let allHabits = GetAllHabit()
-        return allHabits.filter { $0.habitIsCompleted && date >= $0.habitTime}
+        return allHabits.filter { $0.habitIsCompleted && habitHelper.isHabitDueToday(habit: $0) }
     }
     
     func GetToDoHabit(date: Date) -> [HabitModel] {
         let allHabits = GetAllHabit()
-        return allHabits.filter { !$0.habitIsCompleted && date >= $0.habitTime}
+//        return allHabits.filter { !$0.habitIsCompleted && date >= $0.habitTime}
+        return allHabits.filter { !$0.habitIsCompleted && habitHelper.isHabitDueToday(habit: $0) }
     }
     
     func GetHabitDetailById(id: String) -> HabitModel? {
         let allHabits = GetAllHabit()
-        return allHabits.first { $0.uuid == id}
+        return allHabits.first { $0.uuid == id }
     }
     
     func GetHabitsByName(name: String) -> [HabitModel] {
@@ -79,19 +82,17 @@ class SwiftDataHabitService: ObservableObject, SwiftDataHabitProtocols {
         return allHabits.count
     }
 
-    
     func Insert(data: HabitModel) {
         modelContext.insert(data)
     }
     
     func InsertMany(data: [HabitModel]) {
         for habit in data {
-            Insert(data: habit) 
+            Insert(data: habit)
         }
     }
     
     func Delete(data: HabitModel) {
         modelContext.delete(data)
     }
-
 }

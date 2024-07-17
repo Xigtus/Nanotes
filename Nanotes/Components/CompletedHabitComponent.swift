@@ -15,7 +15,7 @@ struct CompletedHabitComponent: View {
                 Text("Completed (\(completed.count))")
                     .font(.title2)
                     .fontWeight(.bold)
-                
+
                 ForEach(completed) { habit in
                     HabitCompletedRowComponent(habit: habit)
                 }

@@ -12,11 +12,16 @@ class HabitHelper {
     
     func isHabitDueToday(habit: HabitModel) -> Bool {
         let calendar = Calendar.current
-        let today = Date()
+        let today = calendar.startOfDay(for: Date())
+        
+        let habitTime = calendar.startOfDay(for: habit.habitTime)
         
         switch habit.habitRepeat.lowercased() {
             case "every day":
-            return Date() >= calendar.startOfDay(for: habit.habitTime)
+                if Date() >= habitTime {
+                    return true
+                }
+                return false
             case "every week":
                 let habitDay = calendar.component(.weekday, from: habit.habitTime)
                 let todayDay = calendar.component(.weekday, from: today)
@@ -29,7 +34,7 @@ class HabitHelper {
     func updateStreak(for habit: HabitModel) {
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: Date())
-        
+            
         guard let lastDate = habit.habitLastCompletionDate else {
             if habit.habitIsCompleted {
                 habit.habitStreak += 1
@@ -37,20 +42,31 @@ class HabitHelper {
             }
             return
         }
-        
+            
         let lastCompletion = calendar.startOfDay(for: lastDate)
         let daysDifference = calendar.dateComponents([.day], from: lastCompletion, to: today).day ?? 0
-        
+        let weeksDifference = calendar.dateComponents([.weekOfYear], from: lastCompletion, to: today).weekOfYear ?? 0
+            
         if habit.habitIsCompleted {
-            if daysDifference == 1 {
-                habit.habitStreak += 1
-                habit.habitLastCompletionDate = today
-            } else if daysDifference > 1 {
-                habit.habitStreak = 1
-                habit.habitLastCompletionDate = today
+            if habit.habitRepeat.lowercased() == "every day" {
+                if daysDifference == 1 {
+                    habit.habitStreak += 1
+                    habit.habitLastCompletionDate = today
+                } else if daysDifference > 1 {
+                    habit.habitStreak = 1
+                    habit.habitLastCompletionDate = today
+                }
+            } else if habit.habitRepeat.lowercased() == "every week" {
+                if weeksDifference == 1 {
+                    habit.habitStreak += 1
+                    habit.habitLastCompletionDate = today
+                } else if weeksDifference > 1 {
+                    habit.habitStreak = 1
+                    habit.habitLastCompletionDate = today
+                }
             }
         } else {
-            if daysDifference == 0 {
+            if daysDifference == 0 || (habit.habitRepeat.lowercased() == "every week" && weeksDifference == 0) {
                 habit.habitStreak -= 1
                 habit.habitLastCompletionDate = nil
             }
@@ -75,5 +91,3 @@ class HabitHelper {
         }
     }
 }
-
-

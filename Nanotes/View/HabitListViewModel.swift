@@ -10,6 +10,7 @@ import SwiftUI
 struct HabitListViewModel: View {
     @EnvironmentObject var habitService: SwiftDataHabitService
 
+    @Binding var allHabits: [HabitModel]
     var habits: [HabitModel]
     var body: some View {
         Section {
@@ -23,6 +24,7 @@ struct HabitListViewModel: View {
                     Button(role: .destructive) {
                         withAnimation {
                             habitService.Delete(data: habit)
+                            allHabits = habitService.GetAllHabit()
                         }
                     } label: {
                         Label("Delete", systemImage: "trash")
@@ -38,4 +40,3 @@ struct HabitListViewModel: View {
         }
     }
 }
-

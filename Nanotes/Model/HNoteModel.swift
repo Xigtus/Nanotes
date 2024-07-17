@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class HNoteModel {
+final class HNoteModel: ObservableObject {
     var uuid: UUID
     var lastModified: Date
     var content: String

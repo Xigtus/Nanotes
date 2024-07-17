@@ -9,14 +9,13 @@ import SwiftUI
 
 struct TodoHabitsComponent: View {
     var todos: [HabitModel]
-    @State var selectedDate: Date
-    
+
     var body: some View {
         Section {
             Text("Today's To-do Habits")
                 .font(.title2)
                 .fontWeight(.bold)
-            
+
             Text("\(todos.count) remaining")
                 .font(.callout)
                 .foregroundStyle(.secondary)
