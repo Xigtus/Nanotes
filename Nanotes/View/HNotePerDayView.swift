@@ -34,6 +34,7 @@ struct HNotePerDayView: View {
                             Image(uiImage: uiImage)
                                 .resizable()
                                 .frame(height: 200)
+                                .cornerRadius(12.0)
                         }
 
                         PhotosPicker(selection: $selectedPhoto, matching: .images, photoLibrary: .shared()) {

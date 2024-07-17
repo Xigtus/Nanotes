@@ -21,9 +21,6 @@ struct FSCalendarView: UIViewRepresentable {
         let calendar = FSCalendar()
         calendar.delegate = context.coordinator
         calendar.dataSource = context.coordinator
-//        calendar.appearance.selectionColor = .systemPurple
-        // Remove today circle
-//        calendar.today = nil
         calendar.appearance.headerTitleColor = .gray
         calendar.appearance.weekdayTextColor = .gray
 
@@ -64,8 +61,11 @@ struct FSCalendarView: UIViewRepresentable {
             return date > Date() ? .lightGray : nil
         }
 
-        // Utility function to resize, crop to a circle, and set opacity of the image
-        func processImage(image: UIImage, targetSize: CGSize, opacity: CGFloat) -> UIImage? {
+        func processImage(image: UIImage, targetDiameterInInches: CGFloat, opacity: CGFloat) -> UIImage? {
+            // Calculate the target size in points (assuming 72 points per inch)
+            let targetDiameter = targetDiameterInInches * 72
+            let targetSize = CGSize(width: targetDiameter, height: targetDiameter)
+
             // Resize the image
             let size = image.size
             let widthRatio = targetSize.width / size.width
@@ -74,18 +74,24 @@ struct FSCalendarView: UIViewRepresentable {
             let scaledSize = CGSize(width: size.width * scaleFactor, height: size.height * scaleFactor)
 
             // Begin a new image context
-            UIGraphicsBeginImageContextWithOptions(scaledSize, false, 0.0)
+            UIGraphicsBeginImageContextWithOptions(targetSize, false, 0.0)
             guard let context = UIGraphicsGetCurrentContext() else { return nil }
 
             // Set the opacity
             context.setAlpha(opacity)
 
             // Create a circular path
-            let circlePath = UIBezierPath(ovalIn: CGRect(origin: .zero, size: scaledSize))
+            let circlePath = UIBezierPath(ovalIn: CGRect(origin: .zero, size: targetSize))
             circlePath.addClip()
 
+            // Calculate the origin point to center the scaled image in the target size
+            let origin = CGPoint(
+                x: (targetSize.width - scaledSize.width) / 2,
+                y: (targetSize.height - scaledSize.height) / 2
+            )
+
             // Draw the image within the circular path
-            image.draw(in: CGRect(origin: .zero, size: scaledSize))
+            image.draw(in: CGRect(origin: origin, size: scaledSize))
 
             // Get the processed image
             let processedImage = UIGraphicsGetImageFromCurrentImageContext()
@@ -95,19 +101,21 @@ struct FSCalendarView: UIViewRepresentable {
         }
 
         func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
-            let targetSize = CGSize(width: 30, height: 30) // Set your desired size here
+            let targetDiameterInInches: CGFloat = 0.5 // 3 inches / 6 = 0.5 inch, assuming you need to scale down for 30x30 points
             let opacity: CGFloat = 0.3 // 30% opacity
 
             if let imageData = datesWithImage.first(where: { Calendar.current.isDate($0.key, inSameDayAs: date) })?.value,
                let image = UIImage(data: imageData)
             {
-                return processImage(image: image, targetSize: targetSize, opacity: opacity)
+                return processImage(image: image, targetDiameterInInches: targetDiameterInInches, opacity: opacity)
             }
+
             if dates.contains(where: { Calendar.current.isDate($0, inSameDayAs: date) }) {
                 if let image = UIImage(named: "Ellipse") {
-                    return processImage(image: image, targetSize: targetSize, opacity: opacity)
+                    return processImage(image: image, targetDiameterInInches: targetDiameterInInches, opacity: opacity)
                 }
             }
+
             return nil
         }
 
