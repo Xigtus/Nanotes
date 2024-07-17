@@ -34,6 +34,7 @@ class SwiftDataHabitService: ObservableObject, SwiftDataHabitProtocols {
     init() {
         self.modelContainer = try! ModelContainer(for: HabitModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: false))
         self.modelContext = modelContainer.mainContext
+        HabitHelper.shared.habitService = self
     }
     
     func GetAllHabit() -> [HabitModel] {
@@ -83,6 +84,10 @@ class SwiftDataHabitService: ObservableObject, SwiftDataHabitProtocols {
     }
 
     func Insert(data: HabitModel) {
+        modelContext.insert(data)
+    }
+    
+    func Insert(data: HNoteModel) {
         modelContext.insert(data)
     }
     

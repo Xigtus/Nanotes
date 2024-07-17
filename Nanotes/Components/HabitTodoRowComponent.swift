@@ -18,6 +18,8 @@ struct HabitTodoRowComponent: View {
                 withAnimation {
                     habit.habitIsCompleted.toggle()
                     habitHelper.updateStreak(for: habit)
+                    habitHelper.updateNoteHabit(for: habit)
+                    habitHelper.updateStreak(for: habit)
                 }
             } label: {
                 Image(systemName: "circle")

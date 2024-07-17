@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import SwiftData
 
 class HabitHelper {
     static let shared = HabitHelper()
-    
+    var habitService: SwiftDataHabitService?
+   
     func isHabitDueToday(habit: HabitModel) -> Bool {
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: Date())
@@ -29,6 +31,15 @@ class HabitHelper {
             default:
                 return false
         }
+    }
+    
+    func updateNoteHabit(for habit: HabitModel) {
+        let calendar = Calendar.current
+
+        let today = calendar.startOfDay(for: Date())
+        let note = HNoteModel(lastModified: Date(), habit: habit, date: today, content: "New Note")
+            
+        habitService?.Insert(data: note)
     }
     
     func updateStreak(for habit: HabitModel) {
