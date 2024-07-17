@@ -8,16 +8,9 @@
 import SwiftUI
 
 struct HabitDetailView: View {
-    @State private var selectedDate = Date()
-    
-    private var timeHelper = TimeHelper.shared
-
+    private let timeHelper = TimeHelper.shared
     @State var habit: HabitModel
-
-    init(habit: HabitModel) {
-            self._habit = State(initialValue: habit)
-        }
-
+    @State private var selectedDate = Date()
     
     var body: some View {
         NavigationView {

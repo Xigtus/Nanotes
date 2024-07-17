@@ -9,59 +9,49 @@ import SwiftUI
 import SwiftData
 
 struct HabitViewModel: View {
-    @Environment(\.modelContext) var modelContext
+//    @Environment(\.modelContext) var modelContext
+    @EnvironmentObject var habitService: SwiftDataHabitService
     @State private var selectedDate = Date()
     @State private var showAddHabit = false
     @State private var searchQuery = ""
     
     private var habitHelper = HabitHelper.shared
+        
+//    @Query(sort: \HabitModel.habitTime, order: .forward) private var allHabits: [HabitModel]
     
-    @Query(sort: \HabitModel.habitTime, order: .forward) private var allHabits: [HabitModel]
+    @State private var allHabits: [HabitModel] = []
     
+    private func refreshHabits() {
+        allHabits = habitService.GetAllHabit()
+    }
+
     private var noteCount: Int {
         filteredHabits.count
     }
     
     private var todoCount: Int {
-        filteredTodo.count
+//        filteredTodo.count
+        habitService.GetTotalTodoHabit()
     }
     
     private var completedCount: Int {
-        completedHabits.count
+        habitService.GetTotalCompletedHabit()
     }
     
     var filteredHabits: [HabitModel] {
         if searchQuery.isEmpty {
             return allHabits
         }
+        return habitService.GetHabitsByName(name: searchQuery)
         
-        return allHabits.filter {
-            $0.habitName.range(of: searchQuery, options: .caseInsensitive) != nil
-        }
     }
     
     var filteredTodo: [HabitModel] {
-        let uncompletedHabits = allHabits.filter { !$0.habitIsCompleted && habitHelper.isHabitDueToday(habit: $0) }
-        
-        if searchQuery.isEmpty {
-            return uncompletedHabits
-        }
-        
-        return uncompletedHabits.filter {
-            $0.habitName.range(of: searchQuery, options: .caseInsensitive) != nil
-        }
+        habitService.GetToDoHabit(date: selectedDate)
     }
     
     var completedHabits: [HabitModel] {
-        let completed = allHabits.filter { $0.habitIsCompleted && habitHelper.isHabitDueToday(habit: $0) }
-        
-        if searchQuery.isEmpty {
-            return completed
-        }
-        
-        return completed.filter {
-            $0.habitName.range(of: searchQuery, options: .caseInsensitive) != nil
-        }
+        habitService.GetCompletedHabit(date: selectedDate)
     }
     
     var body: some View {
@@ -77,6 +67,9 @@ struct HabitViewModel: View {
                     HabitListViewModel(habits: filteredHabits)
                 }
             }
+            .onAppear(perform: {
+                refreshHabits()
+            })
             .navigationTitle("Habit Tracking Notes")
             .toolbar {
                 ToolbarItemGroup(placement: .primaryAction) {

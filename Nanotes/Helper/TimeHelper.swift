@@ -9,9 +9,7 @@ import Foundation
 
 class TimeHelper {
     static let shared = TimeHelper()
-    
-    private init() {}
-    
+
     func formatTimeToString(_ format: String, date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = format

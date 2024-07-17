@@ -9,10 +9,12 @@ import SwiftUI
 
 @main
 struct NanotesApp: App {
+    @StateObject private var habitService = SwiftDataHabitService()
+    
     var body: some Scene {
         WindowGroup {
             HabitView()
-				.modelContainer(for: HabitModel.self)
+                .environmentObject(habitService)
         }
     }
 }

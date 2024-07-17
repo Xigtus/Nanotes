@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CompletedHabitComponent: View {
     var completed: [HabitModel]
-    
     var body: some View {
         if !completed.isEmpty {
             Section {

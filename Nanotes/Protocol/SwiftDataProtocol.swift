@@ -13,13 +13,15 @@ protocol SwiftDataHabitProtocols {
     func GetCompletedHabit(date: Date) -> [HabitModel]
     func GetToDoHabit(date: Date) -> [HabitModel]
     func GetHabitDetailById(id: String) -> HabitModel?
-    func GetHabitDetailByName(name: String) -> [HabitModel]
+    func GetHabitsByName(name: String) -> [HabitModel]
     func GetTotalHabit() -> Int
     func GetTotalTodoHabit() -> Int
     func GetTotalCompletedHabit() -> Int
     
-    func Insert(data: HabitModel)-> Error?
-    func InsertMany(data: [HabitModel]) -> Error?
+    func Insert(data: HabitModel)
+    func InsertMany(data: [HabitModel])
+    
+    func Delete(data: HabitModel)
 }
 
 class SwiftDataHabitService: ObservableObject, SwiftDataHabitProtocols {
@@ -55,9 +57,11 @@ class SwiftDataHabitService: ObservableObject, SwiftDataHabitProtocols {
         return allHabits.first { $0.uuid == id}
     }
     
-    func GetHabitDetailByName(name: String) -> [HabitModel] {
+    func GetHabitsByName(name: String) -> [HabitModel] {
         let allHabits = GetAllHabit()
-        return allHabits.filter { $0.habitName == name}
+        return allHabits.filter {
+            $0.habitName.range(of: name, options: .caseInsensitive) != nil
+        }
     }
     
     func GetTotalHabit() -> Int {
@@ -76,19 +80,18 @@ class SwiftDataHabitService: ObservableObject, SwiftDataHabitProtocols {
     }
 
     
-    func Insert(data: HabitModel) -> Error? {
-        return modelContext.insert(data) as? Error
+    func Insert(data: HabitModel) {
+        modelContext.insert(data)
     }
     
-    func InsertMany(data: [HabitModel]) -> Error? {
-        var errors: [Error] = []
-            
-            for habit in data {
-                if let error = Insert(data: habit) {
-                    errors.append(error)
-                }
-            }
-            
-        return errors as? Error
+    func InsertMany(data: [HabitModel]) {
+        for habit in data {
+            Insert(data: habit) 
+        }
     }
+    
+    func Delete(data: HabitModel) {
+        modelContext.delete(data)
+    }
+
 }

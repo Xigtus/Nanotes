@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct HabitNameComponent: View {
-    @Environment(\.dismiss) var dismiss
-    @Environment(\.modelContext) var modelContext
-
     @Binding var habitName: String
     
     var body: some View {

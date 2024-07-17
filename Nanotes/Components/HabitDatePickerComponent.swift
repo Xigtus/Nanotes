@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct HabitDatePickerComponent: View {
-    @Environment(\.dismiss) var dismiss
-    @Environment(\.modelContext) var modelContext
-
     @Binding var startDate: Date
     @Binding var endDate: Date
     
@@ -21,7 +18,3 @@ struct HabitDatePickerComponent: View {
         }
     }
 }
-
-//#Preview {
-//    HabitDatePickerComponent()
-//}

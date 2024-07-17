@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct HabitRepeatComponent: View {
-    @Environment(\.dismiss) var dismiss
-    @Environment(\.modelContext) var modelContext
-
     @Binding var repeatType: String
     @Binding var habitDate: Date
     

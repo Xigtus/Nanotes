@@ -10,8 +10,6 @@ import Foundation
 class HabitHelper {
     static let shared = HabitHelper()
     
-    private init() {}
-    
     func isHabitDueToday(habit: HabitModel) -> Bool {
         let calendar = Calendar.current
         let today = Date()

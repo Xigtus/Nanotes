@@ -9,7 +9,9 @@ import SwiftUI
 
 struct CreateHabitViewModel: View {
     @Environment(\.dismiss) var dismiss
-    @Environment(\.modelContext) var modelContext
+//    @Environment(\.modelContext) var modelContext
+    @EnvironmentObject var habitService: SwiftDataHabitService
+    
     
     @Binding var data: HabitModel
     
@@ -21,14 +23,16 @@ struct CreateHabitViewModel: View {
             
             HabitRepeatComponent(repeatType: $data.habitRepeat, habitDate: $data.habitTime)
             
-            HabitAlertComponent(habitAlert: $data.habitAlert)
+            HabitAlertComponent(data: $data)
+            
         }
         .navigationTitle("New Habit")
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button("Save") {
                     withAnimation {
-                        modelContext.insert(data)
+//                        modelContext.insert(data)
+                        habitService.Insert(data: data)
                     }
                     dismiss()
                 }

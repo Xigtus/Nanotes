@@ -8,10 +8,6 @@
 import SwiftUI
 
 struct AddHabitView: View {
-	
-	@Environment(\.dismiss) var dismiss
-	@Environment(\.modelContext) var modelContext
-	
 	@State private var habitDetails = HabitModel()
 //	private var endDate: Date! = nil
 		

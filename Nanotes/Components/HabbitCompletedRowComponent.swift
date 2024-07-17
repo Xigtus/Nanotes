@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct HabitCompletedRowComponent: View {
-    @Environment(\.modelContext) var modelContext
     @State var habit: HabitModel
+    private let habitHelper = HabitHelper.shared
 
     var body: some View {
         HStack {
             Button {
                 withAnimation {
                     habit.habitIsCompleted.toggle()
-                    updateStreak(for: habit)
-                    resetCompletionStatus(for: habit)
+                    habitHelper.updateStreak(for: habit)
+                    habitHelper.resetCompletionStatus(for: habit)
                 }
             } label: {
                 Image(systemName: "circle")
@@ -52,13 +52,5 @@ struct HabitCompletedRowComponent: View {
                 }
             }
         }
-    }
-
-    func updateStreak(for habit: HabitModel) {
-        // Function implementation
-    }
-
-    func resetCompletionStatus(for habit: HabitModel) {
-        // Function implementation
     }
 }

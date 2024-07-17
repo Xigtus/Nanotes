@@ -8,15 +8,9 @@
 import SwiftUI
 
 struct HabitTodoRowComponent: View {
-    @Environment(\.modelContext) var modelContext
     @State var habit: HabitModel
     
-    private var habitHelper = HabitHelper.shared
-
-    init(habit: HabitModel) {
-        self._habit = State(initialValue: habit)
-    }
-
+    private let habitHelper = HabitHelper.shared
     
     var body: some View {
         HStack {

@@ -13,6 +13,7 @@
 		8B2B98B02C4676CB00FB28D6 /* HabbitCompletedRowComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B98AF2C4676CB00FB28D6 /* HabbitCompletedRowComponent.swift */; };
 		8B2B98B22C46791000FB28D6 /* TodoHabitComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B98B12C46791000FB28D6 /* TodoHabitComponent.swift */; };
 		8B2B98B42C46793500FB28D6 /* CompletedHabitComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B98B32C46793500FB28D6 /* CompletedHabitComponent.swift */; };
+		8B2B98B92C468D6700FB28D6 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B98B82C468D6700FB28D6 /* AlertHelper.swift */; };
 		8BCDDD2D2C40DE8000DA2F38 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8BCDDD2C2C40DE8000DA2F38 /* .gitignore */; };
 		8BCDDD302C454E4D00DA2F38 /* CreateHabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCDDD2F2C454E4D00DA2F38 /* CreateHabitViewModel.swift */; };
 		8BCDDD332C454E6500DA2F38 /* TimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCDDD322C454E6500DA2F38 /* TimeHelper.swift */; };
@@ -22,7 +23,6 @@
 		8BCDDD492C4565B800DA2F38 /* HabitRepeatComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCDDD482C4565B800DA2F38 /* HabitRepeatComponent.swift */; };
 		8BCDDD4C2C45663500DA2F38 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCDDD4B2C45663500DA2F38 /* Constant.swift */; };
 		8BCDDD4E2C45675800DA2F38 /* HabitAlertComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCDDD4D2C45675800DA2F38 /* HabitAlertComponent.swift */; };
-		8BCDDD512C456C6F00DA2F38 /* HabitViewNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCDDD502C456C6F00DA2F38 /* HabitViewNew.swift */; };
 		8BCDDD542C460FDE00DA2F38 /* SwiftDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCDDD532C460FDE00DA2F38 /* SwiftDataProtocol.swift */; };
 		8BCDDD582C46169200DA2F38 /* HabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCDDD572C46169200DA2F38 /* HabitViewModel.swift */; };
 		9B0A94882C44C2020011C12C /* HNoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0A94872C44C2020011C12C /* HNoteModel.swift */; };
@@ -45,6 +45,8 @@
 		8B2B98AF2C4676CB00FB28D6 /* HabbitCompletedRowComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbitCompletedRowComponent.swift; sourceTree = "<group>"; };
 		8B2B98B12C46791000FB28D6 /* TodoHabitComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoHabitComponent.swift; sourceTree = "<group>"; };
 		8B2B98B32C46793500FB28D6 /* CompletedHabitComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedHabitComponent.swift; sourceTree = "<group>"; };
+		8B2B98B82C468D6700FB28D6 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
+		8B2B98BA2C469BED00FB28D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BCDDD2C2C40DE8000DA2F38 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		8BCDDD2F2C454E4D00DA2F38 /* CreateHabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHabitViewModel.swift; sourceTree = "<group>"; };
 		8BCDDD322C454E6500DA2F38 /* TimeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeHelper.swift; sourceTree = "<group>"; };
@@ -54,7 +56,6 @@
 		8BCDDD482C4565B800DA2F38 /* HabitRepeatComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitRepeatComponent.swift; sourceTree = "<group>"; };
 		8BCDDD4B2C45663500DA2F38 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		8BCDDD4D2C45675800DA2F38 /* HabitAlertComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitAlertComponent.swift; sourceTree = "<group>"; };
-		8BCDDD502C456C6F00DA2F38 /* HabitViewNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewNew.swift; sourceTree = "<group>"; };
 		8BCDDD532C460FDE00DA2F38 /* SwiftDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataProtocol.swift; sourceTree = "<group>"; };
 		8BCDDD572C46169200DA2F38 /* HabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewModel.swift; sourceTree = "<group>"; };
 		9B0A94872C44C2020011C12C /* HNoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNoteModel.swift; sourceTree = "<group>"; };
@@ -106,6 +107,7 @@
 			children = (
 				8BCDDD322C454E6500DA2F38 /* TimeHelper.swift */,
 				8BCDDD3C2C45548F00DA2F38 /* HabitHelper.swift */,
+				8B2B98B82C468D6700FB28D6 /* AlertHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -137,7 +139,6 @@
 		8BCDDD4F2C456C5C00DA2F38 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8BCDDD502C456C6F00DA2F38 /* HabitViewNew.swift */,
 				E4DF2B442C401B64007C41D8 /* AddHabitView.swift */,
 				9B0A94892C44C4C60011C12C /* HabitDetailView.swift */,
 				E4277F042C3E25410040CBEC /* HabitView.swift */,
@@ -185,6 +186,7 @@
 				E4277F022C3E25410040CBEC /* NanotesApp.swift */,
 				E4277F062C3E25430040CBEC /* Assets.xcassets */,
 				E4277F082C3E25430040CBEC /* Preview Content */,
+				8B2B98BA2C469BED00FB28D6 /* Info.plist */,
 			);
 			path = Nanotes;
 			sourceTree = "<group>";
@@ -274,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B2B98B92C468D6700FB28D6 /* AlertHelper.swift in Sources */,
 				8BCDDD542C460FDE00DA2F38 /* SwiftDataProtocol.swift in Sources */,
 				9B0A94882C44C2020011C12C /* HNoteModel.swift in Sources */,
 				8BCDDD4C2C45663500DA2F38 /* Constant.swift in Sources */,
@@ -293,7 +296,6 @@
 				8B2B98B22C46791000FB28D6 /* TodoHabitComponent.swift in Sources */,
 				8B2B98AC2C46769500FB28D6 /* HabitTodoRowComponent.swift in Sources */,
 				8BCDDD452C4562D600DA2F38 /* HabitNameComponent.swift in Sources */,
-				8BCDDD512C456C6F00DA2F38 /* HabitViewNew.swift in Sources */,
 				8B2B98B42C46793500FB28D6 /* CompletedHabitComponent.swift in Sources */,
 				8BCDDD332C454E6500DA2F38 /* TimeHelper.swift in Sources */,
 				9B0A948C2C44C5540011C12C /* FSCalendarView.swift in Sources */,
@@ -357,6 +359,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -414,6 +417,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -445,7 +449,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = gustirfajar.speedrun.nanochallenge3.Nanotes;
+				PRODUCT_BUNDLE_IDENTIFIER = pebruwantoro.Nanotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -474,7 +478,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = gustirfajar.speedrun.nanochallenge3.Nanotes;
+				PRODUCT_BUNDLE_IDENTIFIER = pebruwantoro.Nanotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

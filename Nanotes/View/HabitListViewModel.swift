@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HabitListViewModel: View {
-    @Environment(\.modelContext) var modelContext
+    @EnvironmentObject var habitService: SwiftDataHabitService
 
     var habits: [HabitModel]
     var body: some View {
@@ -16,14 +16,13 @@ struct HabitListViewModel: View {
             ForEach(habits) { habit in
                 NavigationLink {
                     HabitDetailView(habit: habit)
-                    
                 } label: {
                     HabitRowComponent(habit: habit)
                 }
                 .swipeActions {
                     Button(role: .destructive) {
                         withAnimation {
-                            modelContext.delete(habit)
+                            habitService.Delete(data: habit)
                         }
                     } label: {
                         Label("Delete", systemImage: "trash")
