@@ -62,9 +62,7 @@ struct HabitViewModel: View {
                 if filteredHabits.isEmpty {
                     EmptyView()
                 } else {
-                    TodoHabitsComponent(todos: filteredTodo)
-
-                    CompletedHabitComponent(completed: completedHabits)
+                    TodoHabitsComponent(todos: filteredTodo, completedHabits: completedHabits)
 
                     HabitListViewModel(allHabits: $allHabits, habits: filteredHabits)
                 }

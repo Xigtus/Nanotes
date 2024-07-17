@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TodoHabitsComponent: View {
     var todos: [HabitModel]
+    var completedHabits: [HabitModel]
 
     var body: some View {
         Section {
@@ -24,6 +25,8 @@ struct TodoHabitsComponent: View {
             ForEach(todos) { todo in
                 HabitTodoRowComponent(habit: todo)
             }
-        }
+
+            CompletedHabitComponent(completed: completedHabits)
+        }.listRowSeparator(.hidden)
     }
 }

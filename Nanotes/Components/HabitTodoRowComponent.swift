@@ -52,4 +52,3 @@ struct HabitTodoRowComponent: View {
         .offset(y: -15)
     }
 }
-
