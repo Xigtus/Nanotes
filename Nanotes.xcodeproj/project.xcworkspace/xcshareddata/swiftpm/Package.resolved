@@ -1,6 +1,15 @@
 {
-  "originHash" : "2210fcafa6e02a3f16f3c2d3cc45e0b8bfbabcff7a5be6325d5d2194bc31f854",
+  "originHash" : "1038e74ee46b44ee21f68021db35027e4d40d088279855c4dd78405867520b13",
   "pins" : [
+    {
+      "identity" : "calendarview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Mijick/CalendarView.git",
+      "state" : {
+        "revision" : "b347587ba39a023b61881158872db9d01a90a9a6",
+        "version" : "1.0.0"
+      }
+    },
     {
       "identity" : "fscalendar",
       "kind" : "remoteSourceControl",

@@ -17,6 +17,9 @@
 		E4277F052C3E25410040CBEC /* HabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4277F042C3E25410040CBEC /* HabitView.swift */; };
 		E4277F072C3E25430040CBEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4277F062C3E25430040CBEC /* Assets.xcassets */; };
 		E4277F0A2C3E25430040CBEC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4277F092C3E25430040CBEC /* Preview Assets.xcassets */; };
+		E45D21A32C47DF330082E3CE /* TestHabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45D21A22C47DF330082E3CE /* TestHabitDetailView.swift */; };
+		E4797A492C46CD45005AB108 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4797A482C46CD45005AB108 /* Extensions.swift */; };
+		E4797A4F2C48232E005AB108 /* MijickCalendarView in Frameworks */ = {isa = PBXBuildFile; productRef = E4797A4E2C48232E005AB108 /* MijickCalendarView */; };
 		E4DF2B432C401A91007C41D8 /* HabitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF2B422C401A91007C41D8 /* HabitModel.swift */; };
 		E4DF2B452C401B64007C41D8 /* AddHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF2B442C401B64007C41D8 /* AddHabitView.swift */; };
 /* End PBXBuildFile section */
@@ -32,6 +35,8 @@
 		E4277F042C3E25410040CBEC /* HabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitView.swift; sourceTree = "<group>"; };
 		E4277F062C3E25430040CBEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E4277F092C3E25430040CBEC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E45D21A22C47DF330082E3CE /* TestHabitDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHabitDetailView.swift; sourceTree = "<group>"; };
+		E4797A482C46CD45005AB108 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E4DF2B422C401A91007C41D8 /* HabitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitModel.swift; sourceTree = "<group>"; };
 		E4DF2B442C401B64007C41D8 /* AddHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -41,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4797A4F2C48232E005AB108 /* MijickCalendarView in Frameworks */,
 				9B0A948F2C44C5690011C12C /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,6 +84,8 @@
 				9B0A94872C44C2020011C12C /* HNoteModel.swift */,
 				E4277F062C3E25430040CBEC /* Assets.xcassets */,
 				E4277F082C3E25430040CBEC /* Preview Content */,
+				E45D21A22C47DF330082E3CE /* TestHabitDetailView.swift */,
+				E4797A482C46CD45005AB108 /* Extensions.swift */,
 			);
 			path = Nanotes;
 			sourceTree = "<group>";
@@ -108,6 +116,7 @@
 			name = Nanotes;
 			packageProductDependencies = (
 				9B0A948E2C44C5690011C12C /* FSCalendar */,
+				E4797A4E2C48232E005AB108 /* MijickCalendarView */,
 			);
 			productName = Nanotes;
 			productReference = E4277EFF2C3E25410040CBEC /* Nanotes.app */;
@@ -139,6 +148,7 @@
 			mainGroup = E4277EF62C3E25410040CBEC;
 			packageReferences = (
 				9B0A948D2C44C5690011C12C /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				E4797A4D2C48232E005AB108 /* XCRemoteSwiftPackageReference "CalendarView" */,
 			);
 			productRefGroup = E4277F002C3E25410040CBEC /* Products */;
 			projectDirPath = "";
@@ -170,7 +180,9 @@
 				9B0A94882C44C2020011C12C /* HNoteModel.swift in Sources */,
 				E4DF2B432C401A91007C41D8 /* HabitModel.swift in Sources */,
 				9B0A948A2C44C4C60011C12C /* HabitDetailView.swift in Sources */,
+				E45D21A32C47DF330082E3CE /* TestHabitDetailView.swift in Sources */,
 				E4DF2B452C401B64007C41D8 /* AddHabitView.swift in Sources */,
+				E4797A492C46CD45005AB108 /* Extensions.swift in Sources */,
 				E4277F052C3E25410040CBEC /* HabitView.swift in Sources */,
 				9B0A948C2C44C5540011C12C /* FSCalendarView.swift in Sources */,
 				9B0A94912C44CB350011C12C /* HNotePerDayView.swift in Sources */,
@@ -390,6 +402,14 @@
 				minimumVersion = 2.8.4;
 			};
 		};
+		E4797A4D2C48232E005AB108 /* XCRemoteSwiftPackageReference "CalendarView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Mijick/CalendarView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -397,6 +417,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9B0A948D2C44C5690011C12C /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
+		};
+		E4797A4E2C48232E005AB108 /* MijickCalendarView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E4797A4D2C48232E005AB108 /* XCRemoteSwiftPackageReference "CalendarView" */;
+			productName = MijickCalendarView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

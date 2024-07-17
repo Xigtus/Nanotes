@@ -13,9 +13,7 @@ struct HabitView: View {
 	
     @State private var showAddHabit = false
     @State private var searchQuery = ""
-    
-    @State private var lastViewedDate: Date?
-	
+    	
     @Query(sort: \HabitModel.habitTime, order: .forward) private var allHabits: [HabitModel]
 	
     private var noteCount: Int {
@@ -188,7 +186,7 @@ struct HabitView: View {
                     Section {
                         ForEach(filteredHabits) { habit in
                             NavigationLink {
-                                HabitDetailView(habit: habit)
+                                TestHabitDetailView(habit: habit)
                             } label: {
                                 HStack {
                                     VStack(alignment: .leading) {
@@ -268,16 +266,17 @@ struct HabitView: View {
                        .presentationDetents([.large])
                    })
             .onAppear {
-                let today = Calendar.current.startOfDay(for: Date())
-                        
-                if lastViewedDate == nil || Calendar.current.isDate(lastViewedDate!, inSameDayAs: today) == false {
-                    for habit in allHabits {
-                        if isHabitDueToday(habit: habit) {
-                            resetCompletionStatus(for: habit)
-                        }
-                    }
-                    lastViewedDate = today
-                }
+				let today = Calendar.current.startOfDay(for: Date())
+				let storedLastViewedDate = UserDefaults.standard.lastViewedDate
+				
+				if storedLastViewedDate == nil || !Calendar.current.isDate(storedLastViewedDate!, inSameDayAs: today) {
+					for habit in allHabits {
+						if isHabitDueToday(habit: habit) {
+							resetCompletionStatus(for: habit)
+						}
+					}
+					UserDefaults.standard.lastViewedDate = today
+				}
             }
         }
         .searchable(text: $searchQuery, prompt: "Search")
