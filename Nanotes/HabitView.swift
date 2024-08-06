@@ -263,17 +263,30 @@ struct HabitView: View {
 				}
 				.presentationDetents([.large])
 			})
+			.onAppear() {
+				for habit in allHabits {
+					if isHabitDueToday(habit: habit) {
+						resetCompletionStatus(for: habit)
+					}
+				}
+			}
 		}
 		.searchable(text: $searchQuery, prompt: "Search")
     }
 	
 	func isHabitDueToday(habit: HabitModel) -> Bool {
 		let calendar = Calendar.current
-		let today = Date()
+		let today = calendar.startOfDay(for: Date()) // Start of today
+		
+		let habitTime = calendar.startOfDay(for: habit.habitTime)
 		
 		switch habit.habitRepeat.lowercased() {
 			case "every day":
-				return true
+				// Check if habitTime is today
+				if Date() >= habitTime {
+					return true
+				}
+				return false
 			case "every week":
 				let habitDay = calendar.component(.weekday, from: habit.habitTime)
 				let todayDay = calendar.component(.weekday, from: today)
@@ -297,17 +310,28 @@ struct HabitView: View {
 		
 		let lastCompletion = calendar.startOfDay(for: lastDate)
 		let daysDifference = calendar.dateComponents([.day], from: lastCompletion, to: today).day ?? 0
+		let weeksDifference = calendar.dateComponents([.weekOfYear], from: lastCompletion, to: today).weekOfYear ?? 0
 		
 		if habit.habitIsCompleted {
-			if daysDifference == 1 {
-				habit.habitStreak += 1
-				habit.habitLastCompletionDate = today
-			} else if daysDifference > 1 {
-				habit.habitStreak = 1
-				habit.habitLastCompletionDate = today
+			if habit.habitRepeat.lowercased() == "every day" {
+				if daysDifference == 1 {
+					habit.habitStreak += 1
+					habit.habitLastCompletionDate = today
+				} else if daysDifference > 1 {
+					habit.habitStreak = 1
+					habit.habitLastCompletionDate = today
+				}
+			} else if habit.habitRepeat.lowercased() == "every week" {
+				if weeksDifference == 1 {
+					habit.habitStreak += 1
+					habit.habitLastCompletionDate = today
+				} else if weeksDifference > 1 {
+					habit.habitStreak = 1
+					habit.habitLastCompletionDate = today
+				}
 			}
 		} else {
-			if daysDifference == 0 {
+			if daysDifference == 0 || (habit.habitRepeat.lowercased() == "every week" && weeksDifference == 0) {
 				habit.habitStreak -= 1
 				habit.habitLastCompletionDate = nil
 			}
@@ -324,7 +348,7 @@ struct HabitView: View {
 			case "every week":
 				let habitDay = calendar.component(.weekday, from: habit.habitTime)
 				let todayDay = calendar.component(.weekday, from: today)
-				if habitDay != todayDay {
+				if habitDay == todayDay {
 					habit.habitIsCompleted = false
 				}
 			default:

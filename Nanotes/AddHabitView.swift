@@ -30,8 +30,8 @@ struct AddHabitView: View {
 			}
 			
 			Section {
-				DatePicker("Start Date", selection: $habitDetails.habitStartDate, displayedComponents: .date)
-				DatePicker("End Date", selection: $habitDetails.habitEndDate, displayedComponents: .date)
+				DatePicker("Start Date", selection: $habitDetails.habitTime, displayedComponents: .date)
+//				DatePicker("End Date", selection: $habitDetails.habitEndDate, displayedComponents: .date)
 			}
 			
 			Section("Repeat Option") {
